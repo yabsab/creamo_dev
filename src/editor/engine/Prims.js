@@ -55,7 +55,14 @@ export default class Prims {
         Prims.table.shrink = Prims.Shrink;
         Prims.table.same = Prims.Same;
         Prims.table.say = Prims.Say;
+        Prims.table.LED = Prims.LED;
     }
+
+    static LED(strip)
+    {
+        console.log(led)
+    }
+
 
     static Done (strip) {
         if (strip.oldblock != null) {
@@ -84,6 +91,7 @@ export default class Prims {
     }
 
     static StopMine (strip) {
+        console.log("stopMind slslslslsls")
         var spr = strip.spr;
         for (var i = 0; i < ScratchJr.runtime.threadsRunning.length; i++) {
             if ((ScratchJr.runtime.threadsRunning[i].spr == spr)
@@ -116,7 +124,7 @@ export default class Prims {
         }
         strip.waitTimer = tinterval * 4;
     }
-
+  
     static Say (strip) {
         var b = strip.thisblock;
         var s = strip.spr;
@@ -191,6 +199,9 @@ export default class Prims {
     }
 
     static Wait (strip) {
+
+        console.log("aalalalalal")
+
         var n = strip.thisblock.getArgValue();
         strip.waitTimer = Math.round(n * 3.125); // thenth of a second
         Prims.setTime(strip);
@@ -204,7 +215,10 @@ export default class Prims {
         strip.thisblock = strip.thisblock.next;
     }
 
-    static SetSpeed (strip) {
+    static SetSpeed (strip) 
+    {
+
+        console.log("steopSdkdkdkdkdkdpeed");
         var s = strip.spr;
         var num = Number(strip.thisblock.getArgValue()); // 0 - 1 - 2
         s.speed = Math.pow(2, num);

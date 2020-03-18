@@ -189,22 +189,23 @@ export default class Sprite {
 
     spriteThumbnail (p) {
         var tb = newHTML('div', 'spritethumb off', p);
-        tb.setAttribute('id', getIdFor('spritethumb'));
-        tb.type = 'spritethumb';
-        tb.owner = this.id;
-        var c = newHTML('canvas', 'thumbcanvas', tb);
+        // tb.setAttribute('id', getIdFor('spritethumb'));
+        //  tb.type = 'spritethumb';
+         tb.owner = this.id;
+        // var c = newHTML('canvas', 'thumbcanvas', tb);
         // TODO: Merge these to get better thumbnail rendering on iOS
-        if (isAndroid) {
-            setCanvasSizeScaledToWindowDocumentHeight(c, 0, 0);
-        } else {
-            setCanvasSize(c, 0, 0);
-        }
+        // if (isAndroid) {
+        //     setCanvasSizeScaledToWindowDocumentHeight(c, 0, 0);
+        // } else {
+        //     setCanvasSize(c, 0, 0);
+        // }
 
-        this.drawMyImage(c, c.width, c.height);
-        p = newHTML('p', 'sname', tb);
+        // this.drawMyImage(c, c.width, c.height);
+        // p = newHTML('p', 'sname', tb);
         // p.textContent = this.name;
-        newHTML('div', 'brush', tb);
-        this.thumbnail = tb;
+        // newHTML('div', 'brush', tb);
+        // this.thumbnail = tb;
+       
         return tb;
     }
 
@@ -220,34 +221,34 @@ export default class Sprite {
     }
 
     drawMyImage (cnv, w, h) {
-        // if (!this.img) {
-        //     return;
-        // }
-        // setCanvasSize(cnv, w, h);
+        if (!this.img) {
+            return;
+        }
+        setCanvasSize(cnv, w, h);
 
-        // // TODO: Merge these to get better thumbnail rendering on iOS
-        // var img;
-        // if (isAndroid) {
-        //     img = this.originalImg;
-        // } else {
-        //     img = this.img;
-        // }
-        // var imgw = img.naturalWidth ? img.naturalWidth : img.width;
-        // var imgh = img.naturalHeight ? img.naturalHeight : img.height;
-        // var scale = Math.min(w / imgw, h / imgh);
-        // var ctx = cnv.getContext('2d');
-        // var iw = Math.floor(scale * imgw);
-        // var ih = Math.floor(scale * imgh);
-        // var ix = Math.floor((w - (scale * imgw)) / 2);
-        // var iy = Math.floor((h - (scale * imgh)) / 2);
-        // ctx.drawImage(this.border, 0, 0, this.border.width, this.border.height, ix, iy, iw, ih);
-        // if (!img.complete) {
-        //     img.onload = function () {
-        //         ctx.drawImage(img, 0, 0, imgw, imgh, ix, iy, iw, ih);
-        //     };
-        // } else {
-        //     ctx.drawImage(img, 0, 0, imgw, imgh, ix, iy, iw, ih);
-        // }
+        // TODO: Merge these to get better thumbnail rendering on iOS
+        var img;
+        if (isAndroid) {
+            img = this.originalImg;
+        } else {
+            img = this.img;
+        }
+        var imgw = img.naturalWidth ? img.naturalWidth : img.width;
+        var imgh = img.naturalHeight ? img.naturalHeight : img.height;
+        var scale = Math.min(w / imgw, h / imgh);
+        var ctx = cnv.getContext('2d');
+        var iw = Math.floor(scale * imgw);
+        var ih = Math.floor(scale * imgh);
+        var ix = Math.floor((w - (scale * imgw)) / 2);
+        var iy = Math.floor((h - (scale * imgh)) / 2);
+        ctx.drawImage(this.border, 0, 0, this.border.width, this.border.height, ix, iy, iw, ih);
+        if (!img.complete) {
+            img.onload = function () {
+                ctx.drawImage(img, 0, 0, imgw, imgh, ix, iy, iw, ih);
+            };
+        } else {
+            ctx.drawImage(img, 0, 0, imgw, imgh, ix, iy, iw, ih);
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////////

@@ -118,8 +118,12 @@ didConnectPeripheral:(CBPeripheral *)peripheral
 
 +(void)sendValue:(NSString *)str
 {
-   NSLog(@"%@",str);
+   NSLog(@"%@ str data",str);
    CBService *service;
+ NSData* bytes = [str dataUsingEncoding:NSUTF8StringEncoding];
+        
+ NSLog(@"%@ 변환값",bytes);
+    
     
   for (service in [discoveredPeripheral services])
     {
@@ -129,10 +133,14 @@ didConnectPeripheral:(CBPeripheral *)peripheral
        for (CBCharacteristic * characteristic in [service characteristics])
        {
            
-            NSLog(@"characteristic");
+//          [discoveredPeripheral writeValue:[str dataUsingEncoding:NSUTF8StringEncoding]
+//            forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
            
-          [discoveredPeripheral writeValue:[str dataUsingEncoding:NSUTF8StringEncoding]
-            forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
+           [discoveredPeripheral writeValue:[str dataUsingEncoding:
+           NSASCIIStringEncoding]
+           forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
+       
+         
 
       }
    }

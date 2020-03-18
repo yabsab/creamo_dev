@@ -109,8 +109,7 @@ export default class UI {
             ScratchJr.saveAndFlip(evt);
         }; // move to project
 
-        Btbluetooth.setAttribute('id','Btbleutooth')
-        
+        Btbluetooth.setAttribute('id','Btbleutooth')        
         Btbleutooth.ontouchstart = function (evt)
        
         {
@@ -321,13 +320,14 @@ export default class UI {
     static addEditableName (p) {
         var pname = newHTML('form', 'projectname', p);
         pname.name = 'projectname';
-        pname.id = 'title';
+        // pname.id = 'title';
         pname.onsubmit = function (evt)
          {
             submitChange(evt);
         };
         var ti = newHTML('input', 'pnamefield', pname);
         projectNameTextInput = ti;
+       
         ti.name = 'myproject';
         ti.maxLength = 0;
         ti.onkeypress = undefined;

@@ -40,7 +40,8 @@ export default class IO {
         }
     }
 
-    static requestFromServer (url, whenDone) {
+    static requestFromServer (url, whenDone)
+     {
         var xmlrequest = new XMLHttpRequest();
         xmlrequest.addEventListener('error', transferFailed, false);
         xmlrequest.onreadystatechange = function () {
@@ -78,7 +79,8 @@ export default class IO {
         drawThumbnail(srccnv, cnv);
         return cnv.toDataURL('image/png');
     }
-
+/*----------------------------이미지 로드---------------------------------------------*/
+    
     // in iOS casting an svg url in a img.src works except when the SVG has images.
     // This code avoids that bug
     // also when in debug mode you need to get the base64 to avoid sandboxing issues
@@ -205,7 +207,7 @@ export default class IO {
             IO.getObjectinDB(database, md5, fcn);
         }
     }
-
+ /*--------------------------------이미지 로드----------------------------------------*/
     static getObjectinDB (db, md5, fcn) {
         var json = {};
         json.stmt = 'select * from ' + db + ' where id = ?';

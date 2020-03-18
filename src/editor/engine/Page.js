@@ -19,6 +19,8 @@ export default class Page {
     constructor (id, data, fcn) {
         var container = ScratchJr.stage.pagesdiv;
         this.div = newHTML('div', 'stagepage', container); // newDiv(container,0,0, 480, 360, {position: 'absolute'});
+        this.div.width = 0;
+        this.div.height = 0 ;
         this.div.owner = this;
         this.id = id;
         this.textstartat = 36;
@@ -26,16 +28,10 @@ export default class Page {
         ScratchJr.stage.currentPage = this;
         this.num = data ? data.num : ScratchJr.stage.pages.length + 1;
         this.sprites = JSON.stringify([]);
-        // this.bkg = newDiv(this.div, 0, 0, 480, 360, {
-        //     position: 'absolute',
-        //     background: ScratchJr.stagecolor
-        // });
-
         this.bkg = newDiv(this.div, 0, 0, 0, 0, {
             position: 'absolute',
             background: ScratchJr.stagecolor
         });
-
         this.bkg.type = 'background';
         ScratchJr.stage.pages.push(this);
         if (!data) {
@@ -60,19 +56,19 @@ export default class Page {
         for (var j = 0; j < list.length; j++) {
             Project.recreateObject(this, list[j], data[list[j]], checkCount);
         }
-        for (var i = 0; i < data.layers.length; i++) {
-            var obj = gn(data.layers[i]);
-            if (obj) {
-                this.div.appendChild(obj);
-            }
-        }
+        // for (var i = 0; i < data.layers.length; i++) {
+        //     var obj = gn(data.layers[i]);
+        //     if (obj) {
+        //         this.div.appendChild(obj);
+        //     }
+        // }
         function checkCount () {
             if (!fcn) {
                 return;
             }
-            if (Project.mediaCount < 1) {
-                fcn();
-            }
+            // if (Project.mediaCount < 1) {
+            //     fcn();
+            // }
         }
 
         function checkBkgDone () {
@@ -230,8 +226,10 @@ export default class Page {
     }
 
     pageThumbnail (p) {
-        // var tb = newHTML('div', 'pagethumb', p);
-        // tb.setAttribute('id', getIdFor('pagethumb'));
+          var tb = newHTML('div', 'pagethumb', p);
+          tb.width = 0;
+          tb.height = 0;
+        //  tb.setAttribute('id', getIdFor('pagethumb'));
         // tb.owner = this.id;
         // tb.type = 'pagethumb';
         // var container = newHTML('div', 'pc-container', tb);
@@ -251,21 +249,21 @@ export default class Page {
         //     };
         // }
         // this.thumbnail = tb;
-        // return tb;
+         return tb;
     }
 
     setPageThumb (c) {
         var w0, h0;
         if (window.Settings.edition == 'PBS') {
-            w0 = 136;
-            h0 = 101;
+            w0 = 0;
+            h0 = 0;
         } else {
-            w0 = 132;
-            h0 = 99;
+            w0 = 0;
+            h0 = 0;
         }
         setCanvasSizeScaledToWindowDocumentHeight(c, w0, h0);
-        var w = c.width;
-        var h = c.height;
+        var w = 0;
+        var h = 0;
         var ctx = c.getContext('2d');
 
         if (window.Settings.edition == 'PBS') {

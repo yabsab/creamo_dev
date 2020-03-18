@@ -48,7 +48,8 @@ export function preprocess (s) {
 /**
  * Load the URL synchronously (fine because it's file://), preprocess the result and return the string.
  */
-export function preprocessAndLoad (url) {
+export function preprocessAndLoad (url)
+ {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open('GET', url, false);
     xmlhttp.send();

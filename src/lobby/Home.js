@@ -277,8 +277,9 @@ export default class Home {
         tb.type = 'projectthumb';
         tb.thumb = thumb.md5;
         var mt = newHTML('div', 'aproject p' + pc, tb);
+        // Home.insertThumbnail(mt, 192, 144, thumb);
         Home.insertThumbnail(mt, 192, 144, thumb);
-        var label = newHTML('div', 'projecttitle', tb);
+        // var label = newHTML('div', 'projecttitle', tb);
         var txt = newHTML('h4', undefined, label);
         txt.textContent = data.name;
 

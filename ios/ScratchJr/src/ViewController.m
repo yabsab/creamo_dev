@@ -148,7 +148,7 @@ NSError *errordata;
 {
   
    
-    [CreamoBleClient sendValue:@"test"];
+    [CreamoBleClient sendValue:@"LED"];
     
 
     

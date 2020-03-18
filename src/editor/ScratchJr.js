@@ -226,7 +226,8 @@ export default class ScratchJr {
         storyStarted = true;
     }
 
-    static editorEvents () {
+    static editorEvents () 
+    {
         document.ongesturestart = undefined;
         document.ontouchmove = function (e) {
             e.preventDefault();
@@ -443,14 +444,18 @@ export default class ScratchJr {
         }
     }
 
+/*--------------------------------------------------------------------*/
+//코딩 build button
     static runStrips (e) {
         ScratchJr.stopStripsFromTop(e);
         ScratchJr.unfocus(e);
         ScratchJr.startGreenFlagThreads();
         userStart = true;
+        console.log("코딩 시작 버튼")
     //  time = (new Date()) - 0;
     }
 
+    //button touch 감지 
     static startGreenFlagThreads () {
         ScratchJr.resetSprites();
         ScratchJr.startCurrentPageStrips(['onflag', 'ontouch']);
@@ -470,9 +475,13 @@ export default class ScratchJr {
         }
     }
 
+    //코딩 블록 리스트 및 실행 
     static startScriptsFor (spr, list) {
         var sc = gn(spr.id + '_scripts');
         var topblocks = sc.owner.getBlocksType(list);
+        
+        console.log("topblocks", topblocks)
+
         for (var j = 0; j < topblocks.length; j++) {
             var b = topblocks[j];
             runtime.addRunScript(spr, b);
@@ -486,6 +495,7 @@ export default class ScratchJr {
         ScratchJr.stopStrips();
         userStart = false;
     }
+/*--------------------------------------------------------------------*/
 
     static stopStrips () {
         runtime.stopThreads();

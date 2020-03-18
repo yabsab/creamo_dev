@@ -339,28 +339,28 @@ export default class Thumbs {
     }
 
     static emptyPage (p) {
-        var tb = newHTML('div', 'pagethumb', p);
-        var c = newHTML('div', 'empty', tb);
-        var img;
-        if (window.Settings.edition == 'PBS') {
-            img = newImage(c, 'assets/ui/newpage.svg');
-        } else {
-            img = newImage(c, 'assets/ui/newpage.png', {
-                position: 'absolute'
-            });
-        }
-        img.setAttribute('class', 'unselectable');
-        tb.setAttribute('id', 'emptypage');
-        if (isTablet) {
-            tb.ontouchstart = function (evt) {
-                Thumbs.clickOnEmptyPage(evt);
-            };
-        } else {
-            tb.onmousedown = function (evt) {
-                Thumbs.clickOnEmptyPage(evt);
-            };
-        }
-        return tb;
+         var tb = newHTML('div', 'pagethumb', p);
+        // var c = newHTML('div', 'empty', tb);
+        // var img;
+        // if (window.Settings.edition == 'PBS') {
+        //     img = newImage(c, 'assets/ui/newpage.svg');
+        // } else {
+        //     img = newImage(c, 'assets/ui/newpage.png', {
+        //         position: 'absolute'
+        //     });
+        // }
+        // img.setAttribute('class', 'unselectable');
+        // tb.setAttribute('id', 'emptypage');
+        // if (isTablet) {
+        //     tb.ontouchstart = function (evt) {
+        //         Thumbs.clickOnEmptyPage(evt);
+        //     };
+        // } else {
+        //     tb.onmousedown = function (evt) {
+        //         Thumbs.clickOnEmptyPage(evt);
+        //     };
+        // }
+         return tb;
     }
 
     static clickOnEmptyPage (e) {
