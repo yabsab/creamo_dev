@@ -135,6 +135,17 @@ NSError *errordata;
          [self performSelector:@selector(testFunction)];
          
      }
+     else if ([functionName isEqualToString:@"LEDON"])
+     {
+         [self performSelector:@selector(LED_on)];
+         
+     }
+     else if ([functionName isEqualToString:@"LEDOFF"])
+    {
+         [self performSelector:@selector(LED_off)];
+         
+         
+     }
      return NO;
 
  }
@@ -142,13 +153,27 @@ NSError *errordata;
     return YES;
 }
 
-
+              
+   -(void)LED_off
+  {
+  NSLog(@"bluetooth off");
+  [CreamoBleClient sendValue:@"E"];
+         
+  }
+              
+-(void)LED_on
+{
+    
+    NSLog(@"bluetooth data receive");
+    [CreamoBleClient sendValue:@"L"];
+    
+}
 
 -(void)testFunction
 {
   
    
-    [CreamoBleClient sendValue:@"LED"];
+   // [CreamoBleClient sendValue:@"LED"];
     
 
     

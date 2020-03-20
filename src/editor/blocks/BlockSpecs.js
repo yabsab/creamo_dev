@@ -180,7 +180,7 @@ export default class BlockSpecs {
          return [   
              
             ['onflag', 'wait','stopmine','repeat','space','space','space','endstack','forever'],
-            ['LED'],[],[],[],[]];
+            ['led','ledoff'],[],[],[],[]];
             // ['onflag', 'onclick', 'ontouch', 'onmessage', 'message'],
            // ['forward', 'back', 'up', 'down', 'right', 'left', 'hop', 'home'],
             // ['say', 'space', 'grow', 'shrink', 'same', 'space', 'hide', 'show'],
@@ -229,9 +229,10 @@ export default class BlockSpecs {
 
             //name - [0]blocktype, [1]icon or datastructure, [2]blockshape, 
             //[3]argtype, [4]initial value, [5]highlight, [6]min, [7]max, [8]shadow
-            'LED' : ['LED', BlockSpecs.getImageFrom('assets/blockicons/OnTouch', 'svg'),
+            'led' : ['led', BlockSpecs.getImageFrom('assets/blockicons/OnTouch', 'svg'),
                 BlockSpecs.blueCmd, null, null, BlockSpecs.blueCmdH, null, null, BlockSpecs.cmdS],
-
+            'ledoff' : ['ledoff', BlockSpecs.getImageFrom('assets/blockicons/Foward', 'svg'),
+            BlockSpecs.blueCmd, null, null, BlockSpecs.blueCmdH, null, null, BlockSpecs.cmdS],
 
             'forward': ['forward', BlockSpecs.getImageFrom('assets/blockicons/Foward', 'svg'),
                 BlockSpecs.blueCmd, 'n', 1, BlockSpecs.blueCmdH, -20, 20, BlockSpecs.cmdS],
@@ -318,7 +319,11 @@ export default class BlockSpecs {
             'onmessage': Localization.localize('BLOCK_DESC_ON_MESSAGE', {
                 COLOR: Localization.localize('BLOCK_DESC_MESSAGE_COLOR_ORANGE')
             }),
-            'LED' : Localization.localize('LED'),
+
+
+            'led' : Localization.localize('BLOCK_DESC_LED'),
+            'ledoff' : Localization.localize('BLOCK_DESC_LED_OFF'),
+
             'repeat': Localization.localize('BLOCK_DESC_REPEAT'),
             'forward': Localization.localize('BLOCK_DESC_MOVE_RIGHT'),
             'back': Localization.localize('BLOCK_DESC_MOVE_LEFT'),

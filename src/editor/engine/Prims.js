@@ -55,14 +55,36 @@ export default class Prims {
         Prims.table.shrink = Prims.Shrink;
         Prims.table.same = Prims.Same;
         Prims.table.say = Prims.Say;
-        Prims.table.LED = Prims.LED;
+        Prims.table.led = Prims.LED_on;
+        Prims.table.ledoff = Prims.LED_off;
     }
 
-    static LED(strip)
+    static LED_on(strip)
     {
-        console.log(led)
+        console.log("-------------------------------------")        
+        console.log("LED",strip)
+        console.log("-------------------------------------")
+
+
+        strip.waitTimer = tinterval * 10;
+
+        window.location =  "jscall://LEDON";       
+
+        
+      
+        strip.thisblock = strip.thisblock.next;
     }
 
+    static LED_off(strip)
+    {
+
+        strip.waitTimer = tinterval * 10;
+        console.log("-------------------------------------")        
+        console.log("LEDOFF",strip)
+        console.log("-------------------------------------")
+        window.location =  "jscall://LEDOFF";
+        strip.thisblock = strip.thisblock.next;
+    }
 
     static Done (strip) {
         if (strip.oldblock != null) {
