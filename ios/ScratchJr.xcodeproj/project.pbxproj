@@ -29,6 +29,8 @@
 		D965E3971C3EC63A005D792F /* Free-Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D965E3961C3EC63A005D792F /* Free-Images.xcassets */; };
 		DF9078847448FE87342E92DA /* libPods-ScratchJr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F65FC8EA2B7F0328D7651B1 /* libPods-ScratchJr.a */; };
 		F018A209240F880F004C3B19 /* CreamoBle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018A208240F880F004C3B19 /* CreamoBle.swift */; };
+		F05C9E6224332765008E01EC /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F05C9E6124332765008E01EC /* PopupView.xib */; };
+		F0805F6E2433110000692619 /* Popup.m in Sources */ = {isa = PBXBuildFile; fileRef = F0805F6D2433110000692619 /* Popup.m */; };
 		F0A6D8EA24123A3900A4E82A /* CreamoBleClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A6D8E924123A3900A4E82A /* CreamoBleClient.m */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +87,9 @@
 		D9DDC1E71B50407A00076A58 /* bin */ = {isa = PBXFileReference; lastKnownFileType = folder; name = bin; path = ../bin; sourceTree = "<group>"; };
 		F018A207240F880F004C3B19 /* ScratchJr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScratchJr-Bridging-Header.h"; sourceTree = "<group>"; };
 		F018A208240F880F004C3B19 /* CreamoBle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreamoBle.swift; sourceTree = "<group>"; };
+		F05C9E6124332765008E01EC /* PopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupView.xib; sourceTree = "<group>"; };
+		F0805F6C2433110000692619 /* Popup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Popup.h; sourceTree = "<group>"; };
+		F0805F6D2433110000692619 /* Popup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Popup.m; sourceTree = "<group>"; };
 		F0A6D8E824123A3900A4E82A /* CreamoBleClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreamoBleClient.h; sourceTree = "<group>"; };
 		F0A6D8E924123A3900A4E82A /* CreamoBleClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreamoBleClient.m; sourceTree = "<group>"; };
 		F8E5189E06A85870C28705B8 /* Pods-ScratchJr Free.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScratchJr Free.release.xcconfig"; path = "Target Support Files/Pods-ScratchJr Free/Pods-ScratchJr Free.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +157,7 @@
 				D92D0FC91C3346AC00C573AD /* src */,
 				204D80AF18A4140600ECBB8B /* Supporting Files */,
 				204D80DC18A4195E00ECBB8B /* View.xib */,
+				F05C9E6124332765008E01EC /* PopupView.xib */,
 			);
 			path = ScratchJr;
 			sourceTree = "<group>";
@@ -212,6 +218,7 @@
 		D92D0FDF1C33477F00C573AD /* App */ = {
 			isa = PBXGroup;
 			children = (
+				F0805F652433058600692619 /* PopoverView */,
 				F0A6D8E72412384F00A4E82A /* Main */,
 				F0A6D8E62412384100A4E82A /* bluetooth */,
 				D92D0FBA1C33469A00C573AD /* ScratchJr.h */,
@@ -229,6 +236,15 @@
 				D92D0FB71C33469A00C573AD /* IO.m */,
 			);
 			name = IO;
+			sourceTree = "<group>";
+		};
+		F0805F652433058600692619 /* PopoverView */ = {
+			isa = PBXGroup;
+			children = (
+				F0805F6C2433110000692619 /* Popup.h */,
+				F0805F6D2433110000692619 /* Popup.m */,
+			);
+			name = PopoverView;
 			sourceTree = "<group>";
 		};
 		F0A6D8E62412384100A4E82A /* bluetooth */ = {
@@ -314,6 +330,7 @@
 			files = (
 				D92D0F9D1C33381B00C573AD /* Settings.bundle in Resources */,
 				D965E3971C3EC63A005D792F /* Free-Images.xcassets in Resources */,
+				F05C9E6224332765008E01EC /* PopupView.xib in Resources */,
 				D92D0F9E1C33381B00C573AD /* InfoPlist.strings in Resources */,
 				D92D0F9F1C33381B00C573AD /* View.xib in Resources */,
 			);
@@ -369,6 +386,7 @@
 				F0A6D8EA24123A3900A4E82A /* CreamoBleClient.m in Sources */,
 				D92D0FCE1C3346DC00C573AD /* IO.m in Sources */,
 				D92D0FCF1C3346DC00C573AD /* main.m in Sources */,
+				F0805F6E2433110000692619 /* Popup.m in Sources */,
 				D92D0FD01C3346DC00C573AD /* RecordSound.m in Sources */,
 				D92D0FD11C3346DC00C573AD /* ScratchJr.m in Sources */,
 				D92D0FD21C3346DC00C573AD /* ViewController.m in Sources */,
@@ -443,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "8f58b6d2-97d0-4e4a-ac2e-3c4ee99770bf";
 				SDKROOT = iphoneos;
@@ -493,7 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PROVISIONING_PROFILE = "8f58b6d2-97d0-4e4a-ac2e-3c4ee99770bf";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;

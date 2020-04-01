@@ -1,6 +1,8 @@
 #import "ScratchJr.h"
 #import "ScratchJr-Swift.h"
 #import "CreamoBleClient.h"
+#import "Popup.h"
+
 
 // @import MessageUI;
 @import Firebase;
@@ -16,6 +18,13 @@ NSNumber *rssi;
 NSDictionary *data;
 CBCharacteristic *chardata;
 NSError *errordata;
+Popup *test;
+
+#define DEVICE_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define DEVICE_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+
+
+
 
 @interface ViewController ()
 
@@ -23,14 +32,20 @@ NSError *errordata;
 
 @implementation ViewController
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
+        
     }
     return self;
 }
+
+
+
 
 - (void)viewDidLoad
 {
@@ -43,22 +58,19 @@ NSError *errordata;
     [self reload];
     [self showSplash];
     [IO init: self];
+    
+    CGFloat device_height = (DEVICE_HEIGHT > DEVICE_WIDTH) ? DEVICE_HEIGHT : DEVICE_WIDTH;
+     CGFloat device_width = (DEVICE_HEIGHT < DEVICE_WIDTH) ? DEVICE_HEIGHT : DEVICE_WIDTH;
+    
+    CGRect frame = CGRectMake(device_width/2,device_height/6,400, 400);
+    test = [[Popup alloc]initWithFrame:frame];
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-    
-    [CreamoBleClient bleSingletone];
-    [CreamoBleClient centralManagerDidUpdateState:CbManager];
-       [CreamoBleClient beginScanningForDevice];
-       [CreamoBleClient centralManager:CbManager didDiscoverPeripheral:peripheral advertisementData:data RSSI:rssi];
-       [CreamoBleClient peripheral:peripheral didUpdateValueForCharacteristic:chardata error:errordata];
-     
-    
-
-    
-    
-    
 }
+
+
 
 - (void) showSplash {
     UIImage *loadingImage = [UIImage imageNamed:@"Default-Landscape~ipad.png"];
@@ -130,9 +142,9 @@ NSError *errordata;
      NSString *requestString = [[request URL] absoluteString];
      NSArray *components = [requestString componentsSeparatedByString:@"://"];
      NSString *functionName = [components objectAtIndex:1];
-     if ([functionName isEqualToString:@"testFunction"])
+     if ([functionName isEqualToString:@"bluelistView"])
      {
-         [self performSelector:@selector(testFunction)];
+         [self performSelector:@selector(bluelistView)];
          
      }
      else if ([functionName isEqualToString:@"LEDON"])
@@ -169,15 +181,39 @@ NSError *errordata;
     
 }
 
--(void)testFunction
+-(void)bluelistView
 {
-  
-   
-   // [CreamoBleClient sendValue:@"LED"];
     
+    
+    // 블루투스 Search 함수
+       
+   [CreamoBleClient bleSingletone];
+   [CreamoBleClient centralManagerDidUpdateState:CbManager];
+   [CreamoBleClient beginScanningForDevice];
+   [CreamoBleClient centralManager:CbManager didDiscoverPeripheral:peripheral advertisementData:data RSSI:rssi];
+   [CreamoBleClient peripheral:peripheral didUpdateValueForCharacteristic:chardata error:errordata];
+    
+       
+    
+ 
+    
+    
+  
+    
+    [self.view addSubview:test];
+//
+//    NSLog(@"test text");
+    
+    
+ }
 
+- (void) closePopup
+{
+    
+    [test removeFromSuperview];
     
 }
+ 
 
 
 
@@ -468,6 +504,11 @@ NSError *errordata;
     });
 
 }
+
+
+
+
+
 
 
 @end

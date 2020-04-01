@@ -2,17 +2,16 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "CreamoBleClient.h"
 
-@interface ViewController : UIViewController <CBCentralManagerDelegate, CBPeripheralDelegate, UITextViewDelegate, CreamoBleServer>
+
+@interface ViewController : UIViewController <CBCentralManagerDelegate, CBPeripheralDelegate, UITextViewDelegate>
 
     
 
-
-
+-(void)closePopup;
 @property (strong, nonatomic) CBCentralManager *centralManager;
 @property (strong, nonatomic) CBPeripheral *discoveredPeripheral;
 @property (strong, nonatomic) NSDictionary *data;
 
-
-
+@property(nonatomic,retain)UIPopoverPresentationController *bluetoothlist;
 
 @end

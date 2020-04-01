@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
-
+#import "Popup.h"
 
 
 @interface CreamoBleClient : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate, CBCentralManagerDelegate>
@@ -36,7 +36,7 @@ forCharacteristic:(CBCharacteristic *)characteristic
 +(void)sendValue:(NSString *)str;
 +(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error;
 
-
++(void)stopForDevice;
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central;
 @property(nonatomic, retain) CBCentralManager *CbCentralManager;
@@ -47,6 +47,8 @@ forCharacteristic:(CBCharacteristic *)characteristic
 @property(nonatomic, retain) NSError *error;
 @property(nonatomic, retain) NSString *stringError;
 @property (strong, nonatomic) NSMutableDictionary *devices;
+
+
 
 
 

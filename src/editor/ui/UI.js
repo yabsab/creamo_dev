@@ -34,7 +34,7 @@ const AIRDROPSHARE = 1;
 
 function teset() 
 {
-   window.location =  "jscall://testFunction";
+   window.location =  "jscall://bluelistView";
 
 
 }
@@ -104,14 +104,17 @@ export default class UI {
 
         var Btbluetooth = newHTML('div','Btbleutooth',sl);
 
+        
         flip.setAttribute('id', 'flip');
         flip.ontouchstart = function (evt) {
             ScratchJr.saveAndFlip(evt);
         }; // move to project
 
-        Btbluetooth.setAttribute('id','Btbleutooth')        
+        Btbluetooth.setAttribute('id','Btbleutooth')  
+           
         Btbleutooth.ontouchstart = function (evt)
        
+        
         {
          
             teset()

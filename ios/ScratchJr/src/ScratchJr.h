@@ -130,10 +130,12 @@
 - (void) setAnalyticsPlacePref:(NSString *)place;
 @end
 
-@interface ViewController : UIViewController <JSExports,UIWebViewDelegate,MFMailComposeViewControllerDelegate>
+@interface ViewController : UIViewController <JSExports,UIWebViewDelegate,MFMailComposeViewControllerDelegate, UIPopoverPresentationControllerDelegate>
+
 @property (nonatomic, readwrite, strong) JSContext *js;
 + (UIWebView *)webview;
 + (UIImageView *)splashScreen;
+
 - (void)receiveProject:(NSString *)project;
 - (void)registerDefaultsFromSettingsBundle;
 - (void)reload;

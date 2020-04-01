@@ -21,8 +21,13 @@ CBCharacteristic *Charater;
 NSData *sendData;
 CBService *service;
 NSMutableDictionary *devices;
+NSDictionary *getDivce;
+
+
 
 @implementation CreamoBleClient
+
+
 
 //@synthesize CbCentralManager;
 
@@ -150,13 +155,18 @@ for (service in [discoveredPeripheral services])
 +(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)Peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
 
+    
+//
       
     NSLog(@"Discovered %@ %@", Peripheral, advertisementData);
     
     
     discoveredPeripheral = Peripheral ;
-     deviceName = Peripheral.name;
+    deviceName = Peripheral.name;
    
+    
+
+    
     
     if([deviceName isEqualToString:@"HMSoft"])
     
@@ -183,6 +193,16 @@ for (service in [discoveredPeripheral services])
 
 
 }
+
++(void)stopForDevice
+{
+ // Create a Core Bluetooth Central Manager object
+ 
+    [CbCentralManager stopScan];
+
+}
+
+
 
 
 //데이터 받기
