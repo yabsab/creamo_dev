@@ -1283,11 +1283,6 @@ export default class Paint {
         }
     }
 
-    static changePage () {
-        ScratchJr.stage.currentPage.setBackground(saveMD5, ScratchJr.stage.currentPage.updateBkg);
-        Paint.close();
-    }
-
     static saveSprite (fcn) {
         var cname = document.forms.spriteform.name.value;
         var worthsaving = (gn('layer1').childElementCount > 0) && (PaintUndo.index > 0);

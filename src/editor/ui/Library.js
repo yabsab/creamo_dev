@@ -530,11 +530,12 @@ export default class Library {
         Library.close(e);
     }
 
+    // Bkg = Background(sprite 배경을 의미)
     static closeBkgSelection (e) {
         e.preventDefault();
         e.stopPropagation();
         if (selectedOne) {
-            ScratchJr.stage.currentPage.setBackground(selectedOne, ScratchJr.stage.currentPage.updateBkg);
+            // ScratchJr.stage.currentPage.setBackground(selectedOne, ScratchJr.stage.currentPage.updateBkg);
         }
 
         if (clickThumb) {

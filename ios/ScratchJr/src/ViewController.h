@@ -8,6 +8,7 @@
     
 
 -(void)closePopup;
+-(void)btStatusform;
 @property (strong, nonatomic) CBCentralManager *centralManager;
 @property (strong, nonatomic) CBPeripheral *discoveredPeripheral;
 @property (strong, nonatomic) NSDictionary *data;

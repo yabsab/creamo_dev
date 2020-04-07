@@ -2,7 +2,7 @@
 div.frame {
     width: 100%;
     height: 100%;
-    position: relative;
+    position: static;
     -webkit-overflow-scrolling: none;
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
@@ -21,18 +21,18 @@ div.frame {
     height: ${css_vh(5.99)}; */
     width: ${css_vh(0)};
     height: ${css_vh(0)};
-    background:rgba(255,0,0,0.5);
+    background:  url('../assets/ui/info.svg');
     background-size: 100%;
     background-repeat: no-repeat;
     z-index: 10;
 } 
 
 /* Container */
- /* *.topsection {
+*.topsection {
     padding: ${css_vh(0)};
     margin: ${css_vh(0)} ${css_vh(0)} ${css_vh(0)};
     width: 100%;
-    height: ${css_vh(61.2)};
+    height: ${css_vh(15)};
     background:  url('../assets/ui/backgrounds.png');
     background-size: 100% 100%;
 }
@@ -42,53 +42,58 @@ div.frame {
     display: inline-block;
     margin: ${css_vh(0)};
     padding: ${css_vh(0)};
-    width: ${css_vw(25.39)};
-    height: ${css_vh(61.20)};
+    width: 40%;
+    height: ${css_vh(15)};
     z-index: 1;
 }
 
 *.centerpanel {
-    position: absolute;
-    top: 0px;
-    width: 100%;
+    position: relative;
+    display: inline-block;
+    margin: ${css_vh(0)};
+    padding: ${css_vh(0)};
+    width: 60%;
+    height: ${css_vh(15)};
+    z-index: 1;
 }
 
+/* 사용 안함. 구역 크기 0으로 지정 */
 *.rightpanel {
     position: absolute;
     top: ${css_vh(0)};
-    right: ${css_vh(5.73)};
+    right: ${css_vh(0)};
     margin: ${css_vh(0)};
     padding: ${css_vh(0)};
     display: inline-block;
-    height: ${css_vh(61.20)};
-    width: ${css_vh(21.09)};
-}  */
+    height: ${css_vh(0)};
+    width: ${css_vh(0)};
+}
 
-/* Pages Thumbnails */
+/* Pages Thumbnails - 사용 안하므로 크기 0으로 설정 */
 
- /* .pages {
+ .pages {
     top: ${css_vh(0)};
     position: absolute;
     display: inline-block;
-    margin: ${css_vh(0)} ${css_vh(1.29)} ${css_vh(0)};
-    width:  ${css_vh(21.09)};
-    height: 100%;
+    margin: ${css_vh(0)} ${css_vh(0)} ${css_vh(0)};
+    width:  ${css_vh(0)};
+    height: 0%;
 }  
 
  .pagescc{
     position: absolute;
-    top: ${css_vh(2.60)};
-    width:  ${css_vh(21.09)};
-    height: ${css_vh(57.29)};
+    top: ${css_vh(0)};
+    width:  ${css_vh(0)};
+    height: ${css_vh(0)};
 }
 
 .pagethumb {
     background: none;
     display: inline-block;
-    margin: ${css_vh(0)} ${css_vh(0)} ${css_vh(0.13)};
+    margin: ${css_vh(0)} ${css_vh(0)} ${css_vh(0)};
     padding: ${css_vh(0)};
-    width: ${145 * scaleMultiplier}px;
-    height: ${109 * scaleMultiplier}px;
+    width: 0px;
+    height: 0px;
 } 
 
 .pagethumb.on {
@@ -113,7 +118,7 @@ div.frame {
 }
 
 .pagethumb .pc-container {
-    margin: ${css_vh(0.52)} ${css_vh(0.65)} ${css_vh(0)};
+    margin: ${css_vh(0)} ${css_vh(0)} ${css_vh(0)};
 }
 
 .pagethumb .pc {
@@ -121,28 +126,28 @@ div.frame {
 } 
 
 .pagethumb .empty {
-    margin: ${css_vh(0)} ${css_vh(0)} ${css_vh(0.13)};
-    width: ${145 * scaleMultiplier}px;
-    height: ${109 * scaleMultiplier}px;
+    margin: ${css_vh(0)} ${css_vh(0)} ${css_vh(0)};
+    width: 0px;
+    height: 0px;
 }
 
 .pagethumb .empty img {
-    height: ${109 * scaleMultiplier}px;
+    height: 0px;
 } */
 
-/* .pagethumb .pagenum {
+.pagethumb .pagenum {
     position: relative;
-    margin: ${css_vh(-14.64)} ${css_vh(16.06)} ${css_vh(0)};
+    margin: ${css_vh(0)} ${css_vh(0)} ${css_vh(0)};
     padding: ${css_vh(0)};
-    width: ${css_vh(3.65)};
-    height: ${css_vh(3.65)};
-    font-size: ${css_vh(1.82)};
+    width: ${css_vh(0)};
+    height: ${css_vh(0)};
+    font-size: ${css_vh(0)};
     font-family: Roboto;
     font-weight: bold;
     color: white;
-    padding-left: ${css_vh(1.0)};
-    padding-top: ${css_vh(0.5)};
-    text-shadow:  0 ${css_vh(0.13)} #000;
+    padding-left: ${css_vh(0)};
+    padding-top: ${css_vh(0)};
+    text-shadow:  0 ${css_vh(0)} #000;
     background: url('../assets/ui/numOff.svg') no-repeat left top;
     background-size: 65%;
 } 
@@ -163,7 +168,7 @@ div.frame {
     text-shadow:  0 -${scaleMultiplier}px #AF7228;
     background: url('../assets/ui/numOn.svg') no-repeat left top;
     background-size: 65%;
-}  */
+}
 
 /* webview pixelates the image unless we do this */
 /* .deletethumb {
@@ -195,19 +200,14 @@ div.frame {
 /* 되돌리기 버튼 */
 #blockspalette {
     position: relative;
-    left: 0;
-    right: 0;
-    height: ${64 * scaleMultiplier}px;
-
-    margin: ${css_vh(0)};
-    padding: ${css_vh(0)};
+    height: ${css_vh(12)};
     z-index: 10;
 }
 
 #blockspalette .papercut{
     position: absolute;
     margin: ${css_vh(0)};
-    top: ${64 * scaleMultiplier}px;
+    top: ${92.16 * scaleMultiplier}px;
     left: ${css_vh(0)};
     background: white;
     z-index: 50;
@@ -224,7 +224,7 @@ div.frame {
     left: ${css_vh(0)};
     width: 100%;
     height: ${7 * scaleMultiplier}px;
-    background: url('../assets/categories/papercut.png');
+    background: url('../assets/cateries/papercut.png');
     background-size: auto 100%;
     background-repeat-x: repeat;
 }
@@ -233,27 +233,26 @@ div.frame {
 /* 블록 뒷 배경 조절  */
 #blockspalette .categoryselector{
     display: inline-block;
-    word-spacing: -1;
     position: relative;
     margin: ${css_vh(0)};
     z-index: 60;
-    width: ${354 * scaleMultiplier}px;
-    height: ${64 * scaleMultiplier}px;
-    overflow: hidden;
+    width: ${300 * scaleMultiplier}px;
+    height: ${92.16 * scaleMultiplier}px;
+    /* overflow: hidden; */
 }
 
 #blockspalette .categoryselector .catbkg{
     position: relative;
-    width: ${708 * scaleMultiplier}px;
-    height: ${128 * scaleMultiplier}px;
+    width: ${300 * scaleMultiplier}px;
+    height: ${92.16 * scaleMultiplier}px;
     background: #E9ECF0;
-    overflow: hidden;
-    zoom: 50%;
+    /* overflow; hidden; */
 }
 /* 코딩블록 뒷배경  */
 .catbkg .catimage{
-    width: ${708 * scaleMultiplier}px;
-    height: ${132 * scaleMultiplier}px;
+    width: ${300 * scaleMultiplier}px;
+    height: ${92.16 * scaleMultiplier}px;
+    /* 배경 크기에 맞게 다시 요청 - 단색으로 해야 재수정 안함!! 클래스에 있어서 no-repeat를 불가함*/
     background: url('../assets/categories/categoryimage.svg');
     background-size: 100%;
 }
@@ -263,8 +262,8 @@ div.frame {
     display: inline-block;
     position: relative;
     margin: ${css_vh(0)} ${css_vh(0)} ${css_vh(0)};
-    height: ${64 * scaleMultiplier}px;
-    width: ${659 * scaleMultiplier}px;
+    height: ${css_vh(12)};;
+    width: ${724 * scaleMultiplier}px; */
     z-index:4;
     overflow: hidden;
 }
@@ -284,7 +283,7 @@ div.frame {
     margin-top: ${css_vh(5.47)};
     padding: ${css_vh(0)};
     width: ${css_vh(4.56)};
-    height: ${css_vh(2.6)};
+    height: ${css_vh(2.6)};  
     overflow: hidden;
     z-index: 40;
 }
@@ -392,13 +391,14 @@ z-index: 5;
 .controlundo {
     position: absolute;
     display: inline-block;
-    top: ${css_vh(0.91)};
+    top: ${css_vh(2)};
     right: ${css_vh(1)};
     margin: ${css_vh(0.00)};
     padding: ${css_vh(0.00)};
-    width: ${100 * scaleMultiplier};
-    height: ${css_vh(6.51)};
-    background: #D62222;
+    width: ${120 * scaleMultiplier}px;
+    height: ${css_vh(8)};
+    /* 이전, 이후 버튼 배경 색 */
+    background: #D62222;      
     z-index: 6;
 }
 
@@ -407,24 +407,26 @@ z-index: 5;
     position: relative;
     margin: ${css_vh(0.00)};
     padding: ${css_vh(0.00)};
-    width: ${css_vh(6.51)};
-    height: ${css_vh(6.51)};
+    width: ${css_vh(7.81)};
+    height: ${css_vh(8)};
     background: url('../assets/undo/undo.png');
     background-size: 101%;
     -webkit-user-select: none;
 }
+#id_undo {background-repeat: no-repeat;}
 
 .redobutton {
     display: inline-block;
     position: relative;
     margin: ${css_vh(0.00)};
     padding: ${css_vh(0.00)};
-    width: ${css_vh(6.51)};
-    height: ${css_vh(6.51)};
+    width: ${css_vh(7.81)};
+    height: ${css_vh(8)};
     background: url('../assets/undo/redo.png');
     background-size: 101%;
     -webkit-user-select: none;
 }
+#id_redo {background-repeat: no-repeat;}
 
 .undobutton.enable {opacity: 1; background: url('../assets/undo/undo.svg'); background-size: 101%;}
 .undobutton.pressed { background:  url('../assets/undo/undopressed.svg'); background-size: 101%;}
@@ -437,7 +439,7 @@ z-index: 5;
 /* Scripts */
 
 .scripts {
-    background: red;
+    background: orange;
     left: 0;
     right: 0;
     position: absolute;
@@ -713,22 +715,16 @@ img.infoboxShareLoading {
 
 
   /*	-webkit-user-select: none !important;*/
-  
-/* form.projectname {
-    padding: ${css_vh(0)};
-    width: ${css_vh(46.88)};
-    height: ${css_vh(6.51)};
-    margin: ${css_vh(0)} ${css_vh(0)} ${css_vh(0)};
-    top: ${css_vh(18.88)};
-    background: #D6AF36;
-    border: 2px solid #D6AF36;
+
+/* infobox fade 공백 중 projectname부분 크기 0 설정 */
+form.projectname {
+    width: ${css_vh(0)};
+    height: ${css_vh(0)};
     -webkit-box-shadow: inset 0 ${2 * scaleMultiplier}px 0 rgba(255, 255, 255, 1), 0 ${scaleMultiplier}px ${2 * scaleMultiplier}px rgba(255, 255, 255,0);
     -webkit-border-radius: ${32 * scaleMultiplier}px;
     -webkit-box-shadow: 0px ${scaleMultiplier}px 0px #ffffff;
-    margin-left: auto;
-    margin-right: auto;
-  
-} */
+}
+/* -------------------------------------------------------------------------------------------------- */
 
 /* *.pnamefield{
     position: absolute;

@@ -693,7 +693,7 @@ export default class Stage {
 
     sd () {
         var stg = gn('stage');
-        var mask = newDiv(gn('stageframe'), stg.offsetLeft + 1, stg.offsetTop + 1, 482, 362,
+        var mask = newDiv(gn('btStart'), stg.offsetLeft + 1, stg.offsetTop + 1, 482, 362,
             {
                 position: 'absolute',
                 zIndex: ScratchJr.layerTop + 20,
@@ -715,7 +715,7 @@ export default class Stage {
         var stg = gn('stage');
         var w = spr.outline.width;
         var h = spr.outline.height;
-        var mask = newDiv(gn('stageframe'), stg.offsetLeft + 1, stg.offsetTop + 1, w, h,
+        var mask = newDiv(gn('btStart'), stg.offsetLeft + 1, stg.offsetTop + 1, w, h,
             {
                 position: 'absolute',
                 zIndex: ScratchJr.layerTop + 20,

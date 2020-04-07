@@ -44,7 +44,7 @@ export default class Palette {
         blockscale *= scaleMultiplier;
         blockdy *= scaleMultiplier;
         Palette.blockdx *= scaleMultiplier; // XXX
-        betweenblocks = 90 * blockscale;
+        betweenblocks = 90 * blockscale;    // palette 블록 사이 간격
         Palette.createCategorySelectors(parent);
         var div = newHTML('div', 'palette', parent);
         div.setAttribute('id', 'palette');
@@ -61,7 +61,7 @@ export default class Palette {
         var bkg = newHTML('div', 'catbkg', sel);
         newHTML('div', 'catimage', bkg);
         var leftPx = 15 * scaleMultiplier;
-        var widthPx = 54 * scaleMultiplier;
+        var widthPx = 70 * scaleMultiplier;     // blockcategory 사이의 간격
         for (var i = 0; i < BlockSpecs.categories.length; i++) {
             Palette.createSelector(sel, i, leftPx + i * widthPx, 0, BlockSpecs.categories[i]);
         }

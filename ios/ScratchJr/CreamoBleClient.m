@@ -10,18 +10,20 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <UIKit/UIKit.h>
+#import "ViewController.h"
 
 
 
 
 CBCentralManager *CbCentralManager;
-NSString *deviceName;
+
 CBPeripheral *discoveredPeripheral;
 CBCharacteristic *Charater;
 NSData *sendData;
 CBService *service;
 NSMutableDictionary *devices;
-NSDictionary *getDivce;
+NSString *bleName;
+NSMutableArray *getDivce;
 
 
 
@@ -50,7 +52,7 @@ NSDictionary *getDivce;
        if(CreamoBle == nil)
          
            CreamoBle = [[self alloc]init];
-        
+          
         NSLog(@"singletone test");
  
     }
@@ -154,27 +156,27 @@ for (service in [discoveredPeripheral services])
 //블루투스 탐색 및 정보 가져오기
 +(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)Peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-
-    
-//
-      
     NSLog(@"Discovered %@ %@", Peripheral, advertisementData);
-    
-    
     discoveredPeripheral = Peripheral ;
     deviceName = Peripheral.name;
-   
     
-
+    [getDivce addObject:deviceName];
     
+    
+    //임시 함수
     
     if([deviceName isEqualToString:@"HMSoft"])
-    
+
         {
+           
         [CbCentralManager connectPeripheral:discoveredPeripheral options:nil];
-            
-        [CbCentralManager stopScan];
         
+       //블루투스 status call 기능
+        ViewController *VC = [[ViewController alloc]init];
+       [VC btStatusform];
+        [CbCentralManager stopScan];
+            
+
         }
 
 }
@@ -190,9 +192,12 @@ for (service in [discoveredPeripheral services])
  
      [CbCentralManager scanForPeripheralsWithServices:nil options:nil];
         CbCentralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
-
-
+    
+     
 }
+
+
+
 
 +(void)stopForDevice
 {

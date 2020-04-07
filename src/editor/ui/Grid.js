@@ -89,15 +89,15 @@ export default class Grid {
     }
 
     static createNumbering (w, h) {
-        var row = newDiv(gn('stageframe'), 0, 0, w - 46 - 30, 24, {
+        var row = newDiv(gn('btStart'), 0, 0, w - 46 - 30, 24, {
             position: 'absolute',
             zIndex: ScratchJr.layerTop
         });
-        row.setAttribute('id', 'rownum');
+         row.setAttribute('id', 'rownum');
         Grid.setScaleAndPosition(row, scaleMultiplier, 46 - 24, 75 + height, w - 46 - 30, 24);
         var offset = size;
-        var dx = offset;
-        for (var i = 0; i < 480 / offset; i++) {
+        var dx = 0;
+        for (var i = 0; i == 0 / offset; i++) {
             var num = newDiv(row, dx, 0, size, size, {
                 position: 'absolute',
                 zIndex: 10
@@ -108,13 +108,13 @@ export default class Grid {
             p.setAttribute('class', 'stylelabel');
             dx += offset;
         }
-        var column = newDiv(gn('stageframe'), 0, 0, 24, h + 24, {
+        var column = newDiv(gn('btStart'), 0, 0, 24, h + 24, {
             position: 'absolute',
             zIndex: ScratchJr.layerTop
         });
         column.setAttribute('id', 'colnum');
         Grid.setScaleAndPosition(column, scaleMultiplier, 46 - 24, 74 + 1, 24, h + 24);
-        var dy = 360 - offset;
+        var dy = 0;
         for (var j = 0; j < 360 / offset; j++) {
             var numj = newDiv(column, 0, dy, size, size, {
                 position: 'absolute',

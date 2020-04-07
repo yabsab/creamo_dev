@@ -1,42 +1,53 @@
 /* sprite library panel */
 /* 홈버튼 기능 삭제 예정 */
 .flipme {
-    position: absolute;
-    margin: 0px;
-    padding: 0px;
-    top: ${css_vh(0.65)};
-    left: ${css_vh(50)};
-    background:  url('../assets/ui/fliplogo.svg');
-    background:rgba(255,0,0,0.5);
-    background-size: 100.5%;
-    width: ${css_vh(8.33)};
-    height: ${css_vh(8.33)};
+    float: left;
+    background-image: url('../assets/lobby/house.svg');
+    background-size: 120% 100%;
+    width: 30%;
+    height: 90%;
 } 
  /* webview pixelates the image unless we do this */
  .flipme:active {
-    background:  url('../assets/ui/fliplogoPressed.svg');
-    background-size: 100.5%; 
+    background-image: url('../assets/ui/fliplogoPressed.svg');
+    background-size: 120% 100%;
 }
 
-.Btbleutooth {
-    position: absolute;
-    margin: 0px;
-    padding: 0px;
-    top: ${css_vh(0.65)};
-    left: ${css_vh(65)};
-    background:  url('../assets/ui/fliplogo.svg');
-    background:rgba(255,0,0,0.5);
-    background-size: 100.5%;
-    width: ${css_vh(8.33)};
-    height: ${css_vh(8.33)};
+.Btbluetooth {
+    float: left;
+    background-image: url('../assets/ui/bluetoothLogo.png');
+    background-size: 120% 100%;
+    width: 30%;
+    height: 90%;
 } 
  /* webview pixelates the image unless we do this */
- .Btbleutooth:active {
-    background:  url('../assets/ui/fliplogoPressed.svg');
-    background-size: 100.5%; 
+ .Btbluetooth:active {
+    background-image:  url('../assets/ui/bluetoothLogo.png');
+    background-size: 120% 100%;
 }
 
+.BtStatus {
+    float: left;
+    width: 15%;
+    height: 30%;
+    background-image:  url('../assets/ui/redcircle.jpg');
+    background-size: 120% 100%;
+    
+}
 
+.BtStatusgreen
+{
+    float: left;
+    width: 15%;
+    height: 30%;
+    background-image:  url('../assets/ui/greencircle.jpg');
+    background-size: 120% 100%;
+}
+
+/* .BtStatus:active {
+    background-image:  url('../assets/ui/bluetoothLogo.png');
+    background-size: 120% 100%;
+} */
 
   /* background: rgba(255,255,255,0.5);  */
 /* .scrollbar {
@@ -52,19 +63,18 @@
   
 } */
 
-.scrollbar .sbthumb {
+/* .scrollbar .sbthumb {
     position: absolute;
     margin: 0px;
     padding: 0px;
     width: ${css_vh(1.04)};
     height: 0px;
-    /* background: #C9C9C9;  */
     background:rgba(255,0,0,0.5);
 }
 
 .scrollbar.off {display: none;}
 
-.scrollbar.on {display: inline-block;}
+.scrollbar.on {display: inline-block;} */
 
 /* #library {
     position: absolute;

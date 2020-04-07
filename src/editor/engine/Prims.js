@@ -55,7 +55,9 @@ export default class Prims {
         Prims.table.shrink = Prims.Shrink;
         Prims.table.same = Prims.Same;
         Prims.table.say = Prims.Say;
-        Prims.table.led = Prims.LED_on;
+        Prims.table.redled = Prims.LED_on;
+        Prims.table.greenled = Prims.LED_on;
+        Prims.table.blueled = Prims.LED_on;
         Prims.table.ledoff = Prims.LED_off;
     }
 

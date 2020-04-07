@@ -296,7 +296,7 @@
 		204D809D18A4140600ECBB8B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1110;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Playful Invention Company";
 				TargetAttributes = {
 					D92D0F861C33381B00C573AD = {
@@ -514,6 +514,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PROVISIONING_PROFILE = "8f58b6d2-97d0-4e4a-ac2e-3c4ee99770bf";
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -539,7 +540,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/../editions/free/Free-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = creamo.intercodi;
+				PRODUCT_BUNDLE_IDENTIFIER = creamo.Intercodi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ScratchJr/ScratchJr-Bridging-Header.h";
@@ -570,7 +571,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/../editions/free/Free-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = creamo.intercodi;
+				PRODUCT_BUNDLE_IDENTIFIER = creamo.Intercodi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ScratchJr/ScratchJr-Bridging-Header.h";

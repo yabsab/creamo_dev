@@ -28,6 +28,7 @@ UIView*    btView;
 UITableView* btTableView;
 NSDictionary* blueDevice;
 UIButton *btBluetoothlist;
+NSString *deviceName;
 
 
 @implementation Popup
@@ -47,6 +48,7 @@ UIButton *btBluetoothlist;
     if (self = [super initWithCoder:aDecoder])
     
      [self loadNib];
+     deviceName = nil;
     
     return self;
 }
@@ -60,6 +62,8 @@ UIButton *btBluetoothlist;
    
     }
      [self loadNib];
+    deviceName = nil;
+    
     
     return self;
 }
@@ -69,25 +73,19 @@ UIButton *btBluetoothlist;
 {
     NSBundle*    bundle    =    [NSBundle bundleForClass:self.class];
     btView =    [bundle loadNibNamed:@"PopupView" owner:self options:nil].firstObject;
-    
     self.btTableView.dataSource = self;
     self.btTableView.delegate =self;
-    
     btTableView.backgroundColor = [UIColor whiteColor];
-    
-     [self addSubview:btView];
-    
+    [self addSubview:btView];
     btView.frame    =    self.bounds;
 
 }
 
 -(void) closeNib
 {
-
     ViewController *main = [[ViewController alloc]init];
     [main closePopup];
     [CreamoBleClient stopForDevice];
-    
 }
 
 
@@ -99,8 +97,8 @@ UIButton *btBluetoothlist;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    
-    return 5;
+    //row 수 디바이스 탐색 개수를 기반으로 하여 숫자 증가
+    return 10;
     
     
 }
@@ -108,27 +106,33 @@ UIButton *btBluetoothlist;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    
+   
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     cell.backgroundColor = [UIColor whiteColor];
     cell.textLabel.textColor = [UIColor blackColor];
+ 
+    NSIndexPath* indexPath1 = [NSIndexPath indexPathForRow:10 inSection:1];
+           
+     if(deviceName == nil)
+    {
+      
+        [self.btTableView beginUpdates];
+        [self.btTableView reloadRowsAtIndexPaths:@[indexPath1] withRowAnimation:UITableViewRowAnimationNone];
+        [self.btTableView endUpdates];
+        
+    }
     
-
-
-    cell.textLabel.text = [NSString stringWithFormat:@"This is row %ld", (long)indexPath.row];
-
-
+    cell.textLabel.text = deviceName;
     return cell;
     
     
 }
 
--(NSDictionary *)getDeviceName:(NSDictionary *)blueDevice
+- (void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation
+
 {
     
-    
-    return blueDevice;
-    
+ 
     
 }
 

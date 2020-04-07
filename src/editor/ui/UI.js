@@ -36,8 +36,9 @@ function teset()
 {
    window.location =  "jscall://bluelistView";
 
-
 }
+
+
 
 export default class UI {
     static get infoBoxOpen () {
@@ -101,29 +102,38 @@ export default class UI {
         //sprite library
         var sl = newHTML('div', 'leftpanel', div);
         var flip = newHTML('div', 'flipme', sl);
-
-        var Btbluetooth = newHTML('div','Btbleutooth',sl);
-
-        
+        var Btbluetooth = newHTML('div','Btbluetooth',sl);
+        var BtStatus = newHTML('div','BtStatus',sl);
         flip.setAttribute('id', 'flip');
+        BtStatus.setAttribute('id','BtStatus')
+        
+        if (btgreen == 0)
+        {
+            
+            var BtStatusgreen = newHTML('div','BtStatusgreen',sl);
+            BtStatusgreen.setAttribute('id','BtStatusgreen')
+            console.log("btgeen == 0")
+        }
         flip.ontouchstart = function (evt) {
             ScratchJr.saveAndFlip(evt);
         }; // move to project
 
-        Btbluetooth.setAttribute('id','Btbleutooth')  
-           
-        Btbleutooth.ontouchstart = function (evt)
        
-        
+        // BtStatus.ontouchstart = function (evt)
+        // {
+        //     teset()
+        // }
+        Btbluetooth.setAttribute('id','Btbluetooth')  
+        Btbluetooth.ontouchstart = function (evt)
         {
-         
             teset()
         }
 
-
         UI.layoutLibrary(sl);
+
+        
     }
-  
+
 
 
     static middleSection () {
@@ -140,8 +150,12 @@ export default class UI {
     static addProjectInfo () {
         info = newHTML('div', 'info', frame);
         info.setAttribute('id', 'projectinfo');
+
+        // infobox fade 요소를 아예 없애면 흰 배경 빼고 다 없어짐
         var infobox = newHTML('div', 'infobox fade', frame);
-        infobox.setAttribute('id', 'infobox');
+        // infobox.setAttribute('id', 'infobox');
+        // ---------------------------------------------------
+
         okclicky = newHTML('div', 'paintdone', infobox);
        
         newHTML('div', 'infoboxlogo', infobox);
@@ -152,57 +166,59 @@ export default class UI {
         var author = newHTML('div', 'infolabel', staticinfo);
         author.setAttribute('id', 'deviceName');
 
-        if (window.Settings.shareEnabled) {
-            // For Parents button
-            var parentsSection = newHTML('div', 'infoboxParentsSection', infobox);
-            parentsSection.setAttribute('id', 'parentsection');
+        // 이 부분을 주석 처리하면 infobox fade 공백 부분이 축소됨   
+        // if (window.Settings.shareEnabled) {
+        //     // For Parents button
+        //     var parentsSection = newHTML('div', 'infoboxParentsSection', infobox);
+        //     parentsSection.setAttribute('id', 'parentsection');
 
-            var parentsButton = newHTML('div', 'infoboxParentsButton', parentsSection);
-            // parentsButton.id = 'infoboxParentsSectionButton';
-            // parentsButton.textContent = Localization.localize('FOR_PARENTS');
+        //     var parentsButton = newHTML('div', 'infoboxParentsButton', parentsSection);
+        //     // parentsButton.id = 'infoboxParentsSectionButton';
+        //     // parentsButton.textContent = Localization.localize('FOR_PARENTS');
 
-            // Sharing
-            var shareButtons = newHTML('div', 'infoboxShareButtons', infobox);
-            // shareButtons.setAttribute('id', 'sharebuttons');
+        //     // Sharing
+        //     var shareButtons = newHTML('div', 'infoboxShareButtons', infobox);
+        //     // shareButtons.setAttribute('id', 'sharebuttons');
 
-            var shareEmail = newHTML('div', 'infoboxShareButton', shareButtons);
-            shareEmail.id = 'infoboxShareButtonEmail';
-            // shareEmail.textContent = Localization.localize('SHARING_BY_EMAIL');
-            shareEmail.ontouchstart = function (e) {
-                // UI.infoDoShare(e, nameField, shareLoadingGif, EMAILSHARE);
-            };
+        //     var shareEmail = newHTML('div', 'infoboxShareButton', shareButtons);
+        //     shareEmail.id = 'infoboxShareButtonEmail';
+        //     // shareEmail.textContent = Localization.localize('SHARING_BY_EMAIL');
+        //     shareEmail.ontouchstart = function (e) {
+        //         // UI.infoDoShare(e, nameField, shareLoadingGif, EMAILSHARE);
+        //     };
 
-            if (isAndroid) {
-                shareEmail.style.margin = 'auto';
-            } else {
-                shareEmail.style.float = 'left';
-            }
+        //     if (isAndroid) {
+        //         shareEmail.style.margin = 'auto';
+        //     } else {
+        //         shareEmail.style.float = 'left';
+        //     }
 
-            if (!isAndroid) {
-                var shareAirdrop = newHTML('div', 'infoboxShareButton', shareButtons);
-                // shareAirdrop.id = 'infoboxShareButtonAirdrop';
-                // shareAirdrop.textContent = Localization.localize('SHARING_BY_AIRDROP');
-                // shareAirdrop.style.float = 'right';
+        //     if (!isAndroid) {
+        //         var shareAirdrop = newHTML('div', 'infoboxShareButton', shareButtons);
+        //         // shareAirdrop.id = 'infoboxShareButtonAirdrop';
+        //         // shareAirdrop.textContent = Localization.localize('SHARING_BY_AIRDROP');
+        //         // shareAirdrop.style.float = 'right';
             
                 
-                shareAirdrop.ontouchstart = function (e) {
-                    UI.infoDoShare(e, nameField, shareLoadingGif, AIRDROPSHARE);
-                };
-            }
+        //         shareAirdrop.ontouchstart = function (e) {
+        //             UI.infoDoShare(e, nameField, shareLoadingGif, AIRDROPSHARE);
+        //         };
+        //     }
 
-            iOS.deviceName(function (name) {
-                // gn('deviceName').textContent = name;
-            });
+        //     iOS.deviceName(function (name) {
+        //         // gn('deviceName').textContent = name;
+        //     });
 
-            var shareLoadingGif = newHTML('img', 'infoboxShareLoading', shareButtons);
-            // shareLoadingGif.src = './assets/ui/loader.png';
+        //     var shareLoadingGif = newHTML('img', 'infoboxShareLoading', shareButtons);
+        //     // shareLoadingGif.src = './assets/ui/loader.png';
 
-            parentsButton.ontouchstart = function (e) {
-                UI.parentalGate(e, function (e) {
-                    UI.showSharing(e, shareButtons, parentsSection);
-                });
-            };
-        }
+        //     parentsButton.ontouchstart = function (e) {
+        //         UI.parentalGate(e, function (e) {
+        //             UI.showSharing(e, shareButtons, parentsSection);
+        //         });
+        //     };
+        // }
+        // -------------------------------------------------------------------------------------------
 
         info.ontouchend = UI.showInfoBox;
         okclicky.ontouchstart = UI.hideInfoBox;
@@ -507,9 +523,11 @@ export default class UI {
     /////////////////////////////////////
 
     static layoutLibrary (sl) {
+        // 이거 없애면 코딩블록 및 코딩할 수 있는 화면 사라짐 -> 그러나 일단 기능사용은 하지 않으므로 css부분만 죽여놓음.
         var sprites = newHTML('div', 'thumbpanel', sl);
         // sprites.setAttribute('id', 'library');
-        
+        // -----------------------------------------------
+
         //scrolling area
         var p = newHTML('div', 'spritethumbs', sprites);
         var div = newHTML('div', 'spritecc', p);
@@ -757,19 +775,25 @@ export default class UI {
     //////////////////////////////
 
     static stageArea (inner) {
-         var outerDiv = newHTML('div', 'centerpanel', inner);
-        var div = newHTML('div', 'stageframe', outerDiv);
-         div.setAttribute('id', 'stageframe');
+        var outerDiv = newHTML('div', 'centerpanel', inner);
+
+        var div = newHTML('div', 'btStart', outerDiv);       
+         div.setAttribute('id', 'btStart');        
+        
+
         ScratchJr.stage = new Stage(div);
         Grid.init(div);
-         if (ScratchJr.isEditable()) {
+        if(ScratchJr.isEditable()) {
             UI.creatTopBarClicky(div, 'addtext', 'addText', UI.addText);
             UI.creatTopBarClicky(div, 'setbkg', 'changeBkg', UI.addBackground);
          }
         UI.creatTopBarClicky(div, 'grid', 'gridToggle off', UI.switchGrid);
         UI.creatTopBarClicky(div, 'go', 'go on', UI.toggleRun);
+       
+       
+
         UI.creatTopBarClicky(div, 'resetall', 'resetall', UI.resetAllSprites);
-        UI.creatTopBarClicky(div, 'full', 'fullscreen', ScratchJr.fullScreen);
+        // UI.creatTopBarClicky(div, 'full', 'fullscreen', ScratchJr.fullScreen);
         UI.toggleGrid(true);
     }
 
@@ -793,6 +817,14 @@ export default class UI {
         } else {
             ScratchJr.stopStripsFromTop(e);
         }
+    }
+
+
+    static bluetoothStatus(e)
+    {
+
+
+
     }
 
     static switchGrid () {
@@ -884,7 +916,7 @@ export default class UI {
     }
 
     static quitFullScreen () {
-        var div = gn('stageframe');
+        var div = gn('btStart');
         div.appendChild(gn('stage'));
         ScratchJr.stage.setStageScaleAndPosition(scaleMultiplier, 46, 74);
         gn('go').className = 'go off nopresent';
@@ -903,11 +935,11 @@ export default class UI {
     }
 
     //////////////////////////////////////
-    //   Right panel
+    //   Right panel - 기능 사용 안하지만 일단 유지
     /////////////////////////////////////
 
     static rightPanel (div) {
-        var rp = newHTML('div', 'rightpanel', div);
+        var rp = newHTML('div', 'rightPanel', div);
         var tb = newHTML('div', 'pages', rp);
         tb.setAttribute('id', 'pages');
         var ndiv = newHTML('div', 'pagescc', tb);
@@ -917,7 +949,7 @@ export default class UI {
     //////////////////////////////////////
     //   Tools
     /////////////////////////////////////
-
+    // 툴바 버튼은 다 삭제했는데 이 부분은 어느 기능과 연동이 되어있는 것 같아 그대로 놔둔 상태
     static layoutToolbar (div) {
         var h = 56;
         var w = 66 * 2;
@@ -964,6 +996,7 @@ export default class UI {
         Library.open('backgrounds');
     }
 
+    // addText 툴바 버튼 관련 부분인데 지우면 홈 버튼이 먹통이 되므로 삭제 안함!!
     static addText (e) {
         if (ScratchJr.onHold) {
             return;
@@ -1200,4 +1233,7 @@ export default class UI {
             pthumbs.removeChild(pthumbs.childNodes[0]);
         }
     }
+
+
 }
+

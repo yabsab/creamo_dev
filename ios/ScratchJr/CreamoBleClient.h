@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
+
 #import "Popup.h"
 
 
@@ -48,7 +49,7 @@ forCharacteristic:(CBCharacteristic *)characteristic
 @property(nonatomic, retain) NSString *stringError;
 @property (strong, nonatomic) NSMutableDictionary *devices;
 
-
+extern NSString *deviceName;
 
 
 

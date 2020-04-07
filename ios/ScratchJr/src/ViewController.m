@@ -18,7 +18,7 @@ NSNumber *rssi;
 NSDictionary *data;
 CBCharacteristic *chardata;
 NSError *errordata;
-Popup *test;
+Popup *popupView;
 
 #define DEVICE_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define DEVICE_WIDTH ([[UIScreen mainScreen] bounds].size.width)
@@ -63,7 +63,7 @@ Popup *test;
      CGFloat device_width = (DEVICE_HEIGHT < DEVICE_WIDTH) ? DEVICE_HEIGHT : DEVICE_WIDTH;
     
     CGRect frame = CGRectMake(device_width/2,device_height/6,400, 400);
-    test = [[Popup alloc]initWithFrame:frame];
+    popupView = [[Popup alloc]initWithFrame:frame];
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
@@ -142,6 +142,10 @@ Popup *test;
      NSString *requestString = [[request URL] absoluteString];
      NSArray *components = [requestString componentsSeparatedByString:@"://"];
      NSString *functionName = [components objectAtIndex:1];
+     //param 겟 test 필요 작성 시 param확인 필요
+//     NSString *functionParam = [components objectAtIndex:2];
+//
+     
      if ([functionName isEqualToString:@"bluelistView"])
      {
          [self performSelector:@selector(bluelistView)];
@@ -193,16 +197,9 @@ Popup *test;
    [CreamoBleClient centralManager:CbManager didDiscoverPeripheral:peripheral advertisementData:data RSSI:rssi];
    [CreamoBleClient peripheral:peripheral didUpdateValueForCharacteristic:chardata error:errordata];
     
-       
-    
- 
-    
-    
-  
-    
-    [self.view addSubview:test];
-//
-//    NSLog(@"test text");
+
+    [self.view addSubview:popupView];
+
     
     
  }
@@ -210,10 +207,19 @@ Popup *test;
 - (void) closePopup
 {
     
-    [test removeFromSuperview];
+    [popupView removeFromSuperview];
     
 }
  
+
+-(void) btStatusform
+{
+    NSLog(@"bt connected");
+    
+    [webview stringByEvaluatingJavaScriptFromString:@"btStatusform();"];
+    
+}
+
 
 
 

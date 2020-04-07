@@ -72,7 +72,7 @@ export default class BlockSpecs {
         BlockSpecs.balloon = str;
     }
 
-        //코딩 블록 외부 모양 로드
+    //palette 코딩 블록 외부 모양 로드
     static loadGraphics () {
         BlockSpecs.mic = BlockSpecs.getImageFrom('assets/ui/recordslot', 'svg');
         BlockSpecs.yellowStart = BlockSpecs.getImageFrom('assets/blocks/start', 'svg');
@@ -141,36 +141,36 @@ export default class BlockSpecs {
     //블록 수정 
     static setupCategories () {
         return new Array(
-            [
+            [   // 기본 블록
                 BlockSpecs.getImageFrom('assets/categories/StartOn', 'svg'),
                 BlockSpecs.getImageFrom('assets/categories/StartOff', 'svg'),
                 window.Settings.categoryStartColor
             ],
-            [
-                BlockSpecs.getImageFrom('assets/categories/MotionOn', 'svg'),
-                BlockSpecs.getImageFrom('assets/categories/MotionOff', 'svg'),
-                window.Settings.categoryMotionColor
-            ],
-            [
+            [   // LED 블록
                 BlockSpecs.getImageFrom('assets/categories/LooksOn', 'svg'),
                 BlockSpecs.getImageFrom('assets/categories/LooksOff', 'svg'),
                 window.Settings.categoryLooksColor
             ],
-            // [
-            //     BlockSpecs.getImageFrom('assets/categories/SoundOn', 'svg'),
-            //     BlockSpecs.getImageFrom('assets/categories/SoundOff', 'svg'),
-            //     window.Settings.categorySoundColor
-            // ],
-            [
-                BlockSpecs.getImageFrom('assets/categories/FlowOn', 'svg'),
-                BlockSpecs.getImageFrom('assets/categories/FlowOff', 'svg'),
-                window.Settings.categoryFlowColor
+            [   // 모터 블록
+                BlockSpecs.getImageFrom('assets/categories/MotionOn', 'svg'),
+                BlockSpecs.getImageFrom('assets/categories/MotionOff', 'svg'),
+                window.Settings.categoryMotionColor
             ],
-            [
-                BlockSpecs.getImageFrom('assets/categories/StopOn', 'svg'),
-                BlockSpecs.getImageFrom('assets/categories/StopOff', 'svg'),
-                window.Settings.categoryStopColor
+            [   // 스피커 블록
+                BlockSpecs.getImageFrom('assets/categories/SoundOn', 'svg'),
+                BlockSpecs.getImageFrom('assets/categories/SoundOff', 'svg'),
+                window.Settings.categorySoundColor
             ]
+            // [
+            //     BlockSpecs.getImageFrom('assets/categories/FlowOn', 'svg'),
+            //     BlockSpecs.getImageFrom('assets/categories/FlowOff', 'svg'),
+            //     window.Settings.categoryFlowColor
+            // ],
+            // [
+            //     BlockSpecs.getImageFrom('assets/categories/StopOn', 'svg'),
+            //     BlockSpecs.getImageFrom('assets/categories/StopOff', 'svg'),
+            //     window.Settings.categoryStopColor
+            // ]
         );
     }
 
@@ -180,9 +180,9 @@ export default class BlockSpecs {
          return [   
              
             ['onflag', 'wait','stopmine','repeat','space','space','space','endstack','forever'],
-            ['led','ledoff'],[],[],[],[]];
-            // ['onflag', 'onclick', 'ontouch', 'onmessage', 'message'],
-           // ['forward', 'back', 'up', 'down', 'right', 'left', 'hop', 'home'],
+            ['redled', 'greenled', 'blueled', 'ledoff'],
+            ['up', 'down', 'left', 'right'],
+            ['speaker']];
             // ['say', 'space', 'grow', 'shrink', 'same', 'space', 'hide', 'show'],
             // [ 'say','wait'],
             // [],
@@ -212,32 +212,33 @@ export default class BlockSpecs {
     //코딩 블록 생성 
     static setupBlocksSpecs () {
         return {
+            // yellow category(normal block)
             'onflag': ['onflag', BlockSpecs.getImageFrom('assets/blockicons/greenFlag', 'svg'),
                 BlockSpecs.yellowStart, null, null, BlockSpecs.yellowStartH, null, null, BlockSpecs.startS],
-            'onmessage': ['onmessage', getshapes, BlockSpecs.yellowStart, 'm', 'Orange',
-                BlockSpecs.yellowStartH, null, null, BlockSpecs.startS],
-            'onclick': ['onclick', BlockSpecs.getImageFrom('assets/blockicons/OnTouch', 'svg'),
-                BlockSpecs.yellowStart, null, null, BlockSpecs.yellowStartH, null, null, BlockSpecs.startS],
-            'ontouch': ['ontouch', BlockSpecs.getImageFrom('assets/blockicons/Bump', 'svg'),
-                BlockSpecs.yellowStart, null, null, BlockSpecs.yellowStartH, null, null, BlockSpecs.startS],
-            'message': ['message', sendshapes, BlockSpecs.yellowCmd, 'm', 'Orange',
-                BlockSpecs.yellowCmdH, null, null, BlockSpecs.cmdS],
-
+            'wait': ['wait', BlockSpecs.getImageFrom('assets/blockicons/Wait', 'svg'),
+                BlockSpecs.yellowCmd, 'n', 10, BlockSpecs.yellowCmdH, 0, 50, BlockSpecs.cmdS],
+            'stopmine': ['stopmine', BlockSpecs.getImageFrom('assets/blockicons/Stop', 'svg'),
+                BlockSpecs.yellowCmd, null, null, BlockSpecs.yellowCmdH, null, null, BlockSpecs.cmdS],
             'repeat': ['repeat', BlockSpecs.getImageFrom('assets/blockicons/Repeat', 'svg'),
                 BlockSpecs.cShape, 'n', 4, BlockSpecs.cShapeH, 0, 24, BlockSpecs.repeatS],
+            'endstack': ['endstack', null, BlockSpecs.redEnd, null, null,
+                BlockSpecs.redEndH, null, null, BlockSpecs.endS],
+            'forever': ['forever', BlockSpecs.getImageFrom('assets/blockicons/Forever', 'svg'),
+                BlockSpecs.redEnd, null, null, BlockSpecs.redEndH, null, null, BlockSpecs.endS],
 
-
+            // purple category(led block)
             //name - [0]blocktype, [1]icon or datastructure, [2]blockshape, 
-            //[3]argtype, [4]initial value, [5]highlight, [6]min, [7]max, [8]shadow
-            'led' : ['led', BlockSpecs.getImageFrom('assets/blockicons/OnTouch', 'svg'),
-                BlockSpecs.blueCmd, null, null, BlockSpecs.blueCmdH, null, null, BlockSpecs.cmdS],
-            'ledoff' : ['ledoff', BlockSpecs.getImageFrom('assets/blockicons/Foward', 'svg'),
-            BlockSpecs.blueCmd, null, null, BlockSpecs.blueCmdH, null, null, BlockSpecs.cmdS],
+            //[3]argtype - BlockArg.js와 관련됨, [4]initial value, [5]highlight, [6]min, [7]max, [8]shadow
+            'redled' : ['redled', BlockSpecs.getImageFrom('assets/blockicons/OnTouch', 'svg'),
+                BlockSpecs.pinkCmd, null, null, BlockSpecs.pinkCmdH, null, null, BlockSpecs.cmdS],
+            'greenled' : ['greenled', BlockSpecs.getImageFrom('assets/blockicons/Say', 'svg'),
+                BlockSpecs.pinkCmd, null, null, BlockSpecs.pinkCmdH, null, null, BlockSpecs.cmdS],
+            'blueled' : ['blueled', BlockSpecs.getImageFrom('assets/blockicons/Shrink', 'svg'),
+                BlockSpecs.pinkCmd, null, null, BlockSpecs.pinkCmdH, null, null, BlockSpecs.cmdS],
+            'ledoff' : ['ledoff', BlockSpecs.getImageFrom('assets/blockicons/speed0', 'svg'),
+            BlockSpecs.pinkCmd, null, null, BlockSpecs.pinkCmdH, null, null, BlockSpecs.cmdS],
 
-            'forward': ['forward', BlockSpecs.getImageFrom('assets/blockicons/Foward', 'svg'),
-                BlockSpecs.blueCmd, 'n', 1, BlockSpecs.blueCmdH, -20, 20, BlockSpecs.cmdS],
-            'back': ['back', BlockSpecs.getImageFrom('assets/blockicons/Back', 'svg'),
-                BlockSpecs.blueCmd, 'n', 1, BlockSpecs.blueCmdH, -20, 20, BlockSpecs.cmdS],
+            // blue category(Motor block)
             'up': ['up', BlockSpecs.getImageFrom('assets/blockicons/Up', 'svg'),
                 BlockSpecs.blueCmd, 'n', 1, BlockSpecs.blueCmdH, -15, 15, BlockSpecs.cmdS],
             'down': ['down', BlockSpecs.getImageFrom('assets/blockicons/Down', 'svg'),
@@ -246,18 +247,11 @@ export default class BlockSpecs {
                 BlockSpecs.blueCmd, 'n', 1, BlockSpecs.blueCmdH, -12, 12, BlockSpecs.cmdS],
             'left': ['left', BlockSpecs.getImageFrom('assets/blockicons/Left', 'svg'),
                 BlockSpecs.blueCmd, 'n', 1, BlockSpecs.blueCmdH, -12, 12, BlockSpecs.cmdS],
-            'home': ['home', BlockSpecs.getImageFrom('assets/blockicons/Home', 'svg'),
-                BlockSpecs.blueCmd, null, null, BlockSpecs.blueCmdH, null, null, BlockSpecs.cmdS],
-            'hop': ['hop', BlockSpecs.getImageFrom('assets/blockicons/Hop', 'svg'),
-                BlockSpecs.blueCmd, 'n', 2, BlockSpecs.blueCmdH, -15, 15, BlockSpecs.cmdS],
 
-
-            'wait': ['wait', BlockSpecs.getImageFrom('assets/blockicons/Wait', 'svg'),
-                BlockSpecs.orangeCmd, 'n', 10, BlockSpecs.orangeCmdH, 0, 50, BlockSpecs.cmdS],
-            'setspeed': ['setspeed', speeds, BlockSpecs.orangeCmd, 'd', 1,
-                BlockSpecs.orangeCmdH, null, null, BlockSpecs.cmdS],
-            'stopmine': ['stopmine', BlockSpecs.getImageFrom('assets/blockicons/Stop', 'svg'),
-                BlockSpecs.orangeCmd, null, null, BlockSpecs.orangeCmdH, null, null, BlockSpecs.cmdS],
+            // green category(Speaker block)
+            'speaker': ['speaker', BlockSpecs.getImageFrom('assets/blockicons/Bump', 'svg'),
+                BlockSpecs.limeCmd, null, null, BlockSpecs.limeCmdH, null, null, BlockSpecs.cmdS],
+            
 
             'say': ['say', BlockSpecs.getImageFrom('assets/blockicons/Say', 'svg'),
                 BlockSpecs.pinkCmd, 't',
@@ -273,24 +267,20 @@ export default class BlockSpecs {
             'same': ['same', BlockSpecs.getImageFrom('assets/blockicons/Reset', 'svg'),
                 BlockSpecs.pinkCmd, null, null, BlockSpecs.pinkCmdH, null, null, BlockSpecs.cmdS],
 
-            // 'playsnd': ['playsnd', BlockSpecs.getImageFrom('assets/blockicons/Speaker', 'svg'),
-            //     BlockSpecs.limeCmd, 's', 'pop.mp3', BlockSpecs.limeCmdH, null, null, BlockSpecs.cmdS],
+            
             // 'playusersnd': ['playusersnd', BlockSpecs.getImageFrom('assets/blockicons/Microphone', 'svg'),
             //     BlockSpecs.limeCmd, 'r', '1', BlockSpecs.limeCmdH, null, null, BlockSpecs.cmdS],
                 
 
-            'wait': ['wait', BlockSpecs.getImageFrom('assets/blockicons/Wait', 'svg'),
-            BlockSpecs.limeCmd, 'n', 10, BlockSpecs.redEndH, 0, 50, BlockSpecs.cmdS],
+            // 'wait': ['wait', BlockSpecs.getImageFrom('assets/blockicons/Wait', 'svg'),
+            // BlockSpecs.limeCmd, 'n', 10, BlockSpecs.redEndH, 0, 50, BlockSpecs.cmdS],
             
             // ['wait'[블록명], BlockSpecs.getImageFrom('assets/blockicons/Wait'[이미지], 'svg'[파일명]),
             // BlockSpecs.limeCmd[블록색상], 'n', 10, BlockSpecs.orangeCmdH[블록위치], 0, 50, BlockSpecs.cmdS],
 
 
 
-            'endstack': ['endstack', null, BlockSpecs.redEnd, null, null,
-                BlockSpecs.redEndH, null, null, BlockSpecs.endS],
-            'forever': ['forever', BlockSpecs.getImageFrom('assets/blockicons/Forever', 'svg'),
-                BlockSpecs.redEnd, null, null, BlockSpecs.redEndH, null, null, BlockSpecs.endS],
+            
             'gotopage': ['gotopage', null,
                 BlockSpecs.redEndLong, 'p', '2', BlockSpecs.redEndLongH, null, null, BlockSpecs.endLongS],
             'caretstart': ['caretstart', null,
@@ -310,54 +300,30 @@ export default class BlockSpecs {
 
         return {
             'onflag': Localization.localize('BLOCK_DESC_GREEN_FLAG'),
-            'onclick': Localization.localize('BLOCK_DESC_ON_TAP', {
-                CHARACTER_NAME: spr.name
-            }),
-            'ontouch': Localization.localize('BLOCK_DESC_ON_BUMP', {
-                CHARACTER_NAME: spr.name ? spr.name : ''
-            }),
-            'onmessage': Localization.localize('BLOCK_DESC_ON_MESSAGE', {
-                COLOR: Localization.localize('BLOCK_DESC_MESSAGE_COLOR_ORANGE')
-            }),
-
-
-            'led' : Localization.localize('BLOCK_DESC_LED'),
-            'ledoff' : Localization.localize('BLOCK_DESC_LED_OFF'),
-
-            'repeat': Localization.localize('BLOCK_DESC_REPEAT'),
-            'forward': Localization.localize('BLOCK_DESC_MOVE_RIGHT'),
-            'back': Localization.localize('BLOCK_DESC_MOVE_LEFT'),
-            'up': Localization.localize('BLOCK_DESC_MOVE_UP'),
-            'down': Localization.localize('BLOCK_DESC_MOVE_DOWN'),
-            'home': Localization.localize('BLOCK_DESC_GO_HOME'),
-            'left': Localization.localize('BLOCK_DESC_TURN_LEFT'),
-            'right': Localization.localize('BLOCK_DESC_TURN_RIGHT'),
-            'hop': Localization.localize('BLOCK_DESC_HOP'),
             'wait': Localization.localize('BLOCK_DESC_WAIT'),
-            'setspeed': Localization.localize('BLOCK_DESC_SET_SPEED'),
             'stopmine': Localization.localize('BLOCK_DESC_STOP', {
                 CHARACTER_NAME: spr.name ? spr.name : spr.str
             }),
-            'say': Localization.localize('BLOCK_DESC_SAY'),
-            'show': Localization.localize('BLOCK_DESC_SHOW'),
-            'hide': Localization.localize('BLOCK_DESC_HIDE'),
-            'grow': Localization.localize('BLOCK_DESC_GROW'),
-            'shrink': Localization.localize('BLOCK_DESC_SHRINK'),
-            'same': Localization.localize('BLOCK_DESC_RESET_SIZE'),
-            'playsnd': Localization.localize('BLOCK_DESC_PLAY_SOUND', {
-                SOUND_NAME: Localization.localize('BLOCK_DESC_PLAY_SOUND_POP')
-            }),
-            'playusersnd': Localization.localize('BLOCK_DESC_PLAY_RECORDED_SOUND'),
+            'repeat': Localization.localize('BLOCK_DESC_REPEAT'),
             'endstack': Localization.localize('BLOCK_DESC_END'),
-            'stopall': Localization.localize('BLOCK_DESC_STOP', {
-                CHARACTER_NAME: spr.name ? spr.name : ''
-            }),
             'forever': Localization.localize('BLOCK_DESC_REPEAT_FOREVER'),
-            'gotopage': Localization.localize('BLOCK_DESC_GO_TO_PAGE', {
-                PAGE: str
-            }),
-            'message': Localization.localize('BLOCK_DESC_SEND_MESSAGE', {
-                COLOR: Localization.localize('BLOCK_DESC_MESSAGE_COLOR_ORANGE')
+
+            // ---------------------------------------------------------------  
+            
+            'redled' : Localization.localize('BLOCK_DESC_RED_LED'),
+            'greenled' : Localization.localize('BLOCK_DESC_GREEN_LED'),
+            'blueled' : Localization.localize('BLOCK_DESC_BLUE_LED'),
+            'ledoff' : Localization.localize('BLOCK_DESC_LED_OFF'),
+            // ---------------------------------------------------------------
+            
+            'up': Localization.localize('BLOCK_DESC_MOVE_UP'),
+            'down': Localization.localize('BLOCK_DESC_MOVE_DOWN'),
+            'left': Localization.localize('BLOCK_DESC_TURN_LEFT'),
+            'right': Localization.localize('BLOCK_DESC_TURN_RIGHT'),
+            // ---------------------------------------------------------------
+
+            'speaker': Localization.localize('BLOCK_DESC_PLAY_SOUND', {
+                SOUND_NAME: Localization.localize('BLOCK_DESC_PLAY_SOUND')
             })
         };
     }

@@ -521,7 +521,7 @@ export default class ScratchJr {
     }
 
     static displayStatus (type) {
-        var ids = ['topsection', 'blockspalette', 'scripts', 'flip', 'projectinfo'];
+        var ids = ['topsection', 'blockspalette', 'scripts', 'bthome', 'projectinfo'];      //projectinfo 삭제해봤지만 아무 반응 없었음
         for (var i = 0; i < ids.length; i++) {
             if (gn(ids[i])) {
                 gn(ids[i]).style.display = type;
