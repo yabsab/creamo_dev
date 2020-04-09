@@ -29,7 +29,7 @@ extern NSError *errordata;
 @property (strong, nonatomic) IBOutlet UIView *btView;
 
 - (void) loadNib;
--(NSDictionary *)getDeviceName:(NSDictionary *)blueDevice;
+
 
 @end
 

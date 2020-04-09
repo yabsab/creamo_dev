@@ -22,10 +22,6 @@ Popup *popupView;
 
 #define DEVICE_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define DEVICE_WIDTH ([[UIScreen mainScreen] bounds].size.width)
-
-
-
-
 @interface ViewController ()
 
 @end
@@ -43,9 +39,6 @@ Popup *popupView;
     }
     return self;
 }
-
-
-
 
 - (void)viewDidLoad
 {
@@ -151,17 +144,49 @@ Popup *popupView;
          [self performSelector:@selector(bluelistView)];
          
      }
-     else if ([functionName isEqualToString:@"LEDON"])
+     else if ([functionName isEqualToString:@"RLEDON"])
      {
-         [self performSelector:@selector(LED_on)];
+         [self performSelector:@selector(RLED_on)];
          
+     }else if ([functionName isEqualToString:@"GLEDON"])
+     {
+         [self performSelector:@selector(GLED_on)];
+     }else if ([functionName isEqualToString:@"BLEDON"])
+     {
+         [self performSelector:@selector(BLED_on)];
      }
      else if ([functionName isEqualToString:@"LEDOFF"])
     {
          [self performSelector:@selector(LED_off)];
          
          
+     }else if ([functionName isEqualToString:@"MotorUp"])
+     {
+         
+         [self performSelector:@selector(Motor_up)];
+                
+         
+     }else if ([functionName isEqualToString:@"MotorDown"])
+     {
+       
+          [self performSelector:@selector(Motor_down)];
      }
+     else if ([functionName isEqualToString:@"Motorstop"])
+     {
+       
+          [self performSelector:@selector(Motor_stop)];
+     }
+     else if ([functionName isEqualToString:@"MotorRight"])
+     {
+        [self performSelector:@selector(Motor_right)];
+         
+     }
+     else if ([functionName isEqualToString:@"MotorLeft"])
+     {
+       
+          [self performSelector:@selector(Motor_left)];
+     }
+               
      return NO;
 
  }
@@ -169,29 +194,25 @@ Popup *popupView;
     return YES;
 }
 
-              
-   -(void)LED_off
-  {
-  NSLog(@"bluetooth off");
-  [CreamoBleClient sendValue:@"E"];
-         
-  }
-              
--(void)LED_on
-{
-    
-    NSLog(@"bluetooth data receive");
-    [CreamoBleClient sendValue:@"L"];
-    
-}
+-(void)RLED_on{[CreamoBleClient sendValue:@"A"];}
+-(void)GLED_on{[CreamoBleClient sendValue:@"B"];}
+-(void)BLED_on{[CreamoBleClient sendValue:@"C"];}
+-(void)LED_off{[CreamoBleClient sendValue:@"D"];}
+-(void)Motor_up{[CreamoBleClient sendValue:@"E"];}
+-(void)Motor_down{[CreamoBleClient sendValue:@"F"];}
+-(void)Motor_left{[CreamoBleClient sendValue:@"G"];}
+-(void)Motor_right{[CreamoBleClient sendValue:@"H"];}
+-(void)Motor_stop{[CreamoBleClient sendValue:@"I"];}
+
+
+ 
+
 
 -(void)bluelistView
 {
-    
-    
     // 블루투스 Search 함수
        
-   [CreamoBleClient bleSingletone];
+   [CreamoBleClient create];
    [CreamoBleClient centralManagerDidUpdateState:CbManager];
    [CreamoBleClient beginScanningForDevice];
    [CreamoBleClient centralManager:CbManager didDiscoverPeripheral:peripheral advertisementData:data RSSI:rssi];
@@ -199,8 +220,6 @@ Popup *popupView;
     
 
     [self.view addSubview:popupView];
-
-    
     
  }
 

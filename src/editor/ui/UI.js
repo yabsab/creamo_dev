@@ -106,13 +106,19 @@ export default class UI {
         var BtStatus = newHTML('div','BtStatus',sl);
         flip.setAttribute('id', 'flip');
         BtStatus.setAttribute('id','BtStatus')
-        
+
+        function getGreen() 
+        {
+            console.log("제발제발")
+        }
+
         if (btgreen == 0)
         {
             
             var BtStatusgreen = newHTML('div','BtStatusgreen',sl);
             BtStatusgreen.setAttribute('id','BtStatusgreen')
             console.log("btgeen == 0")
+           
         }
         flip.ontouchstart = function (evt) {
             ScratchJr.saveAndFlip(evt);

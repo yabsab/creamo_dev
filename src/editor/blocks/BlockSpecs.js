@@ -181,7 +181,7 @@ export default class BlockSpecs {
              
             ['onflag', 'wait','stopmine','repeat','space','space','space','endstack','forever'],
             ['redled', 'greenled', 'blueled', 'ledoff'],
-            ['up', 'down', 'left', 'right'],
+            ['up', 'down', 'left', 'right','motorstop'],
             ['speaker']];
             // ['say', 'space', 'grow', 'shrink', 'same', 'space', 'hide', 'show'],
             // [ 'say','wait'],
@@ -239,14 +239,27 @@ export default class BlockSpecs {
             BlockSpecs.pinkCmd, null, null, BlockSpecs.pinkCmdH, null, null, BlockSpecs.cmdS],
 
             // blue category(Motor block)
+
             'up': ['up', BlockSpecs.getImageFrom('assets/blockicons/Up', 'svg'),
-                BlockSpecs.blueCmd, 'n', 1, BlockSpecs.blueCmdH, -15, 15, BlockSpecs.cmdS],
+                BlockSpecs.blueCmd, null, null, BlockSpecs.blueCmdH, -15, 15, BlockSpecs.cmdS],
             'down': ['down', BlockSpecs.getImageFrom('assets/blockicons/Down', 'svg'),
-                BlockSpecs.blueCmd, 'n', 1, BlockSpecs.blueCmdH, -15, 15, BlockSpecs.cmdS],
+                BlockSpecs.blueCmd, null, null, BlockSpecs.blueCmdH, -15, 15, BlockSpecs.cmdS],
             'right': ['right', BlockSpecs.getImageFrom('assets/blockicons/Right', 'svg'),
-                BlockSpecs.blueCmd, 'n', 1, BlockSpecs.blueCmdH, -12, 12, BlockSpecs.cmdS],
+                BlockSpecs.blueCmd, null, null, BlockSpecs.blueCmdH, -12, 12, BlockSpecs.cmdS],
             'left': ['left', BlockSpecs.getImageFrom('assets/blockicons/Left', 'svg'),
-                BlockSpecs.blueCmd, 'n', 1, BlockSpecs.blueCmdH, -12, 12, BlockSpecs.cmdS],
+                BlockSpecs.blueCmd, null, null, BlockSpecs.blueCmdH, -12, 12, BlockSpecs.cmdS],
+            'motorstop' : ['motorstop', BlockSpecs.getImageFrom('assets/blockicons/Home', 'svg'),
+            BlockSpecs.blueCmd, null, null, BlockSpecs.blueCmdH, -12, 12, BlockSpecs.cmdS],
+
+
+            // 'up': ['up', BlockSpecs.getImageFrom('assets/blockicons/Up', 'svg'),
+            //     BlockSpecs.blueCmd, 'n', 1, BlockSpecs.blueCmdH, -15, 15, BlockSpecs.cmdS],
+            // 'down': ['down', BlockSpecs.getImageFrom('assets/blockicons/Down', 'svg'),
+            //     BlockSpecs.blueCmd, 'n', 1, BlockSpecs.blueCmdH, -15, 15, BlockSpecs.cmdS],
+            // 'right': ['right', BlockSpecs.getImageFrom('assets/blockicons/Right', 'svg'),
+            //     BlockSpecs.blueCmd, 'n', 1, BlockSpecs.blueCmdH, -12, 12, BlockSpecs.cmdS],
+            // 'left': ['left', BlockSpecs.getImageFrom('assets/blockicons/Left', 'svg'),
+            //     BlockSpecs.blueCmd, 'n', 1, BlockSpecs.blueCmdH, -12, 12, BlockSpecs.cmdS],
 
             // green category(Speaker block)
             'speaker': ['speaker', BlockSpecs.getImageFrom('assets/blockicons/Bump', 'svg'),
@@ -320,6 +333,8 @@ export default class BlockSpecs {
             'down': Localization.localize('BLOCK_DESC_MOVE_DOWN'),
             'left': Localization.localize('BLOCK_DESC_TURN_LEFT'),
             'right': Localization.localize('BLOCK_DESC_TURN_RIGHT'),
+            'motorstop' : Localization.localize('BLOCK_DESC_MOVE_STOP'),
+          
             // ---------------------------------------------------------------
 
             'speaker': Localization.localize('BLOCK_DESC_PLAY_SOUND', {

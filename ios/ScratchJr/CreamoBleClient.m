@@ -21,10 +21,10 @@ CBPeripheral *discoveredPeripheral;
 CBCharacteristic *Charater;
 NSData *sendData;
 CBService *service;
-NSMutableDictionary *devices;
+NSArray *devices;
 NSString *bleName;
 NSMutableArray *getDivce;
-
+int n = 0;
 
 
 @implementation CreamoBleClient
@@ -32,8 +32,6 @@ NSMutableArray *getDivce;
 
 
 //@synthesize CbCentralManager;
-
-
 /*
   SingleTone,
   블루투스 스캔
@@ -43,21 +41,17 @@ NSMutableArray *getDivce;
   */
  
 //sharedinstance 
-+(CreamoBleClient *) bleSingletone
++ (instancetype)create
 {
-    static CreamoBleClient *CreamoBle = nil;
-    
-    @synchronized (self)
-    {
-       if(CreamoBle == nil)
-         
-           CreamoBle = [[self alloc]init];
-          
-        NSLog(@"singletone test");
- 
-    }
-  
-    return CreamoBle;
+    static CreamoBleClient    *    instance;
+    static dispatch_once_t                onceToken;
+   
+//한번만 생성
+    dispatch_once(&onceToken, ^{
+        instance = [self new];
+        getDivce = [[NSMutableArray alloc]init];
+    });
+    return instance;
 }
 
 
@@ -65,8 +59,7 @@ NSMutableArray *getDivce;
   if (self = [super init])
   
   {
-      
-  
+    
   }
   return self;
 }
@@ -120,7 +113,31 @@ didConnectPeripheral:(CBPeripheral *)peripheral
 }
 
 
-
+//+(void)sendValue:(NSData *)str
+//{
+//
+////   CBService *service;
+//
+//
+//for (service in [discoveredPeripheral services])
+//    {
+//
+//
+//
+//        NSLog(@"service");
+//
+//
+//       for (CBCharacteristic * characteristic in [service characteristics])
+//       {
+//
+//           [discoveredPeripheral writeValue:str
+//           forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
+//
+//
+//
+//      }
+//   }
+//}
 
 
 +(void)sendValue:(NSString *)str
@@ -137,35 +154,30 @@ for (service in [discoveredPeripheral services])
        for (CBCharacteristic * characteristic in [service characteristics])
        {
            
-//          [discoveredPeripheral writeValue:[str dataUsingEncoding:NSUTF8StringEncoding]
-//            forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
-           
            [discoveredPeripheral writeValue:[str dataUsingEncoding:
            NSUTF8StringEncoding]
            forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
        
-         
-
       }
    }
 }
-
-
-
-
 //블루투스 탐색 및 정보 가져오기
 +(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)Peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    NSLog(@"Discovered %@ %@", Peripheral, advertisementData);
+    
+   
+    
+    
+//  NSLog(@"Discovered %@ %@", Peripheral, advertisementData);
     discoveredPeripheral = Peripheral ;
-    deviceName = Peripheral.name;
     
-    [getDivce addObject:deviceName];
-    
-    
+    deviceName =Peripheral.name;
+    NSLog(@"devicename %@", deviceName);
+    [self get_device:deviceName];
     //임시 함수
     
-    if([deviceName isEqualToString:@"HMSoft"])
+   if([deviceName isEqualToString:@"Creamo"])
+   
 
         {
            
@@ -173,17 +185,14 @@ for (service in [discoveredPeripheral services])
         
        //블루투스 status call 기능
         ViewController *VC = [[ViewController alloc]init];
-       [VC btStatusform];
+        [VC btStatusform];
         [CbCentralManager stopScan];
             
 
         }
+   
 
 }
-
-
-
-
 
 //블루투스 탐색 시작
 +(void)beginScanningForDevice
@@ -197,8 +206,6 @@ for (service in [discoveredPeripheral services])
 }
 
 
-
-
 +(void)stopForDevice
 {
  // Create a Core Bluetooth Central Manager object
@@ -207,6 +214,22 @@ for (service in [discoveredPeripheral services])
 
 }
 
++(void)get_device:(NSString *)name
+{
+    NSString *getDevcename;
+    getDevcename = name;
+    
+    if(getDevcename !=nil)
+    {
+        [getDivce addObject:getDevcename];
+      
+        NSOrderedSet *userSet = [[NSOrderedSet alloc] initWithArray:getDivce];
+
+    getDivce = [[NSMutableArray alloc] initWithArray:[userSet array]];
+        
+    }
+    
+}
 
 
 

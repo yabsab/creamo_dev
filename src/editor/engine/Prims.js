@@ -55,13 +55,66 @@ export default class Prims {
         Prims.table.shrink = Prims.Shrink;
         Prims.table.same = Prims.Same;
         Prims.table.say = Prims.Say;
-        Prims.table.redled = Prims.LED_on;
-        Prims.table.greenled = Prims.LED_on;
-        Prims.table.blueled = Prims.LED_on;
+
+        //LED 블록 제어 
+        Prims.table.redled = Prims.Redled;
+        Prims.table.greenled = Prims.Greenled;
+        Prims.table.blueled = Prims.Blueled;
         Prims.table.ledoff = Prims.LED_off;
+
+         //모터 블록 제어 
+        Prims.table.up = Prims.MotorUp;
+        Prims.table.down = Prims.MotorDown;
+        Prims.table.right = Prims.MotorRight;
+        Prims.table.left = Prims.MotorLeft;
+        Prims.table.motorstop = Prims.Motorstop;
+
+
     }
 
-    static LED_on(strip)
+
+
+    static MotorUp(strip)
+    {
+        strip.waitTimer = tinterval * 10;
+
+        window.location =  "jscall://MotorUp";     
+        strip.thisblock = strip.thisblock.next;
+    }
+
+    static Motorstop(strip)
+    {
+        strip.waitTimer = tinterval * 10;
+
+
+        window.location =  "jscall://Motorstop";     
+        strip.thisblock = strip.thisblock.next;
+
+    }
+    static MotorDown(strip)
+    {
+        strip.waitTimer = tinterval * 10;
+
+        window.location =  "jscall://MotorDown";     
+        strip.thisblock = strip.thisblock.next;
+    }
+
+    static MotorRight(strip)
+    {
+        strip.waitTimer = tinterval * 10;
+        window.location =  "jscall://MotorRight";  
+        strip.thisblock = strip.thisblock.next;
+    }
+
+    static MotorLeft(strip)
+    {
+        strip.waitTimer = tinterval * 10;
+        window.location =  "jscall://MotorLeft"; 
+        strip.thisblock = strip.thisblock.next;
+    }
+
+
+    static Redled(strip)
     {
         console.log("-------------------------------------")        
         console.log("LED",strip)
@@ -70,13 +123,30 @@ export default class Prims {
 
         strip.waitTimer = tinterval * 10;
 
-        window.location =  "jscall://LEDON";       
+        window.location =  "jscall://RLEDON";       
 
         
       
         strip.thisblock = strip.thisblock.next;
     }
 
+    static Greenled (strip)
+    {
+        strip.waitTimer = tinterval * 10;
+        
+        window.location =  "jscall://GLEDON";  
+        strip.thisblock = strip.thisblock.next;     
+
+    }
+
+    static Blueled (strip)
+    {
+        strip.waitTimer = tinterval * 10;
+        
+        window.location =  "jscall://BLEDON";  
+        strip.thisblock = strip.thisblock.next; 
+
+    }
     static LED_off(strip)
     {
 
@@ -87,6 +157,12 @@ export default class Prims {
         window.location =  "jscall://LEDOFF";
         strip.thisblock = strip.thisblock.next;
     }
+
+
+
+
+
+
 
     static Done (strip) {
         if (strip.oldblock != null) {

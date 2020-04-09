@@ -28,7 +28,9 @@ UIView*    btView;
 UITableView* btTableView;
 NSDictionary* blueDevice;
 UIButton *btBluetoothlist;
+NSArray *arDeviceName;
 NSString *deviceName;
+NSNumber *num;
 
 
 @implementation Popup
@@ -49,7 +51,7 @@ NSString *deviceName;
     
      [self loadNib];
      deviceName = nil;
-    
+   
     return self;
 }
 
@@ -63,6 +65,7 @@ NSString *deviceName;
     }
      [self loadNib];
     deviceName = nil;
+    num = [[NSNumber alloc]initWithInt:100];
     
     
     return self;
@@ -76,6 +79,7 @@ NSString *deviceName;
     self.btTableView.dataSource = self;
     self.btTableView.delegate =self;
     btTableView.backgroundColor = [UIColor whiteColor];
+   
     [self addSubview:btView];
     btView.frame    =    self.bounds;
 
@@ -106,25 +110,22 @@ NSString *deviceName;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-   
+   //table view 업데이트
+    
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     cell.backgroundColor = [UIColor whiteColor];
     cell.textLabel.textColor = [UIColor blackColor];
  
-    NSIndexPath* indexPath1 = [NSIndexPath indexPathForRow:10 inSection:1];
-           
-     if(deviceName == nil)
+    
+    
+    NSLog(@"%@nsmutalbearry",getDivce);
+    
+    if(getDivce.count > indexPath.row)
     {
-      
-        [self.btTableView beginUpdates];
-        [self.btTableView reloadRowsAtIndexPaths:@[indexPath1] withRowAnimation:UITableViewRowAnimationNone];
-        [self.btTableView endUpdates];
-        
+        cell.textLabel.text = [getDivce objectAtIndex:indexPath.row];
+//        [tableView reloadData];
     }
-    
-    cell.textLabel.text = deviceName;
-    return cell;
-    
+     return cell;
     
 }
 

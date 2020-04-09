@@ -18,7 +18,9 @@
     
 }
 
-+(CreamoBleClient *)bleSingletone;
+
+
++ (instancetype)create;
 +(void)centralManagerDidUpdateState:(CBCentralManager *)central;
 
 +(void)beginScanningForDevice;
@@ -30,14 +32,29 @@ didConnectPeripheral:(CBPeripheral *)peripheral;
 
 +(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error;
 
+//+(void)writeValue:(NSData *)data
+//             type:(CBCharacteristicWriteType)type;
+
 +(void)writeValue:(NSData *)data
 forCharacteristic:(CBCharacteristic *)characteristic
              type:(CBCharacteristicWriteType)type;
 
+
+
+
 +(void)sendValue:(NSString *)str;
+
+
+
+
+
+
 +(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error;
 
 +(void)stopForDevice;
+
++(void)get_device:(NSString *)name;
+
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central;
 @property(nonatomic, retain) CBCentralManager *CbCentralManager;
@@ -47,9 +64,10 @@ forCharacteristic:(CBCharacteristic *)characteristic
 @property(nonatomic, retain) CBCharacteristic *Charater;
 @property(nonatomic, retain) NSError *error;
 @property(nonatomic, retain) NSString *stringError;
-@property (strong, nonatomic) NSMutableDictionary *devices;
+@property (strong, nonatomic) NSArray *devices;
 
 extern NSString *deviceName;
+extern NSMutableArray *getDivce;
 
 
 

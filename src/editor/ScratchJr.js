@@ -101,12 +101,12 @@ export default class ScratchJr {
 
     static get inFullscreen ()
      {
-        console.log("test1")
+        
         return inFullscreen;
 
     }
     static get stagecolor () {
-         console.log("test1")
+         
         return stagecolor;
     }
 

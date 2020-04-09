@@ -26,7 +26,8 @@
     background-size: 120% 100%;
 }
 
-.BtStatus {
+.BtStatus
+{
     float: left;
     width: 15%;
     height: 30%;
@@ -45,7 +46,7 @@
 }
 
 /* .BtStatus:active {
-    background-image:  url('../assets/ui/bluetoothLogo.png');
+    background-image:  url('../assets//bluetoothLogo.png');
     background-size: 120% 100%;
 } */
 
@@ -111,7 +112,7 @@
 #library .addsprite {
     position: relative;
     display: inline-block;
-    background:  url('../assets/ui/newsprite2.png') no-repeat left top;
+    background:  url('../assets//newsprite2.png') no-repeat left top;
     background-size: 100%;
     width:  ${css_vh(23.18)};
     height: ${css_vh(10.29)};
@@ -139,29 +140,29 @@ sprites thumbnails
 }
 
 .spritethumb.off {
-    background: url('../assets/ui/viewOff.png') no-repeat left top;
+    background: url('../assets//viewOff.png') no-repeat left top;
     background-size: ${css_vh(23.18)};
 }
 
 .spritethumb.off.target {
-    background: url('../assets/ui/viewOffTarget.png') no-repeat left top;
+    background: url('../assets//viewOffTarget.png') no-repeat left top;
     background-size: ${css_vh(23.18)};
 }
 
 .spritethumb.on.target {
-    background: url('../assets/ui/viewOnTarget.png') no-repeat left top;
+    background: url('../assets//viewOnTarget.png') no-repeat left top;
     background-size: 100%;
     width: ${css_vh(29.95)};
 }
 
 .spritethumb.on {
-    background: url('../assets/ui/viewOn.png') no-repeat left top;
+    background: url('../assets//viewOn.png') no-repeat left top;
     background-size: 100%;
     width: ${css_vh(29.95)};
 }
 
 .spritethumb.noneditable {
-    background: url('../assets/ui/viewOffTarget.png') no-repeat left top;
+    background: url('../assets//viewOffTarget.png') no-repeat left top;
     background-size: 100% 100%;
 }
 */
@@ -172,7 +173,7 @@ sprites thumbnails
     left: 0px;
     width: ${css_vh(0)};
     height: ${css_vh(0)};
-    background: url('../assets/ui/closeit.svg');
+    background: url('../assets//closeit.svg');
     background-size: 100.5%;  
     z-index: 5;
     -webkit-user-select: none;
@@ -186,7 +187,7 @@ sprites thumbnails
     left: 0px;
     width: ${css_vh(5.86)};
     height: ${css_vh(5.73)};
-    background: url('../assets/ui/closeit.svg');
+    background: url('../assets//closeit.svg');
     background-size: 100.5%;
     z-index: 5;
     -webkit-user-select: none;

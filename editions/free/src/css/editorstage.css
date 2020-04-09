@@ -27,14 +27,7 @@
 }
 
 
-.bleutoothstatus {
-    position: absolute;
-    top: ${css_vh(0.5)};
-    left: ${css_vh(0)};
-    right: ${css_vh(0)};
-    background-image:  url('../assets/ui/stopPressed1.svg');
-    background-size: 120% 100%;
-}
+
 
 .go.on.nopresent, .go.off.nopresent {
     position: absolute;
