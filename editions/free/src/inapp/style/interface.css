@@ -338,6 +338,7 @@ body {
 }
 
 #interface-vertical-line-blocks-palette-1 {
+    /* height: ${css_vh(1.32)}; */
     height: ${css_vh(1.32)};
     top: ${css_vh(50.66)};
     left: ${css_vh(48.36)};

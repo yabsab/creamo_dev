@@ -229,11 +229,11 @@ export default class BlockSpecs {
             // purple category(led block)
             //name - [0]blocktype, [1]icon or datastructure, [2]blockshape, 
             //[3]argtype - BlockArg.js와 관련됨, [4]initial value, [5]highlight, [6]min, [7]max, [8]shadow
-            'redled' : ['redled', BlockSpecs.getImageFrom('assets/blockicons/OnTouch', 'svg'),
+            'redled' : ['redled', BlockSpecs.getImageFrom('assets/blockicons/3', 'svg'),
                 BlockSpecs.pinkCmd, null, null, BlockSpecs.pinkCmdH, null, null, BlockSpecs.cmdS],
-            'greenled' : ['greenled', BlockSpecs.getImageFrom('assets/blockicons/Say', 'svg'),
+            'greenled' : ['greenled', BlockSpecs.getImageFrom('assets/blockicons/2', 'png'),
                 BlockSpecs.pinkCmd, null, null, BlockSpecs.pinkCmdH, null, null, BlockSpecs.cmdS],
-            'blueled' : ['blueled', BlockSpecs.getImageFrom('assets/blockicons/Shrink', 'svg'),
+            'blueled' : ['blueled', BlockSpecs.getImageFrom('assets/blockicons/1', 'png'),
                 BlockSpecs.pinkCmd, null, null, BlockSpecs.pinkCmdH, null, null, BlockSpecs.cmdS],
             'ledoff' : ['ledoff', BlockSpecs.getImageFrom('assets/blockicons/speed0', 'svg'),
             BlockSpecs.pinkCmd, null, null, BlockSpecs.pinkCmdH, null, null, BlockSpecs.cmdS],

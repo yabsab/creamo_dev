@@ -53,8 +53,10 @@ export default class BlockArg {
             this.argValue = block.spec[4];
             this.div = this.pageIcon(this.argValue);
             var ctx = block.blockshape.getContext('2d');
+            // ctx.drawImage(this.div, 0, 0, this.div.width, this.div.height, 0, 0,
+            //     this.div.width * block.scale, this.div.height * block.scale);
             ctx.drawImage(this.div, 0, 0, this.div.width, this.div.height, 0, 0,
-                this.div.width * block.scale, this.div.height * block.scale);
+                    this.div.width * block.scale, this.div.height * block.scale);
             break;
         case 's':
             this.argValue = block.spec[4];

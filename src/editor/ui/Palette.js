@@ -19,7 +19,7 @@ import {frame, gn, localx, newHTML, scaleMultiplier, isTablet, newDiv,
     setCanvasSize, hitRect, writeText, getStringSize} from '../../utils/lib';
 
 
-let blockscale = 0.75;
+let blockscale = 1.0;
 let numcat = 0; // getter
 let betweenblocks = undefined; // Set in setup()
 let blockdy = 5;
@@ -44,7 +44,7 @@ export default class Palette {
         blockscale *= scaleMultiplier;
         blockdy *= scaleMultiplier;
         Palette.blockdx *= scaleMultiplier; // XXX
-        betweenblocks = 90 * blockscale;    // palette 블록 사이 간격
+        betweenblocks = 95 * blockscale;    // palette 블록 사이 간격
         Palette.createCategorySelectors(parent);
         var div = newHTML('div', 'palette', parent);
         div.setAttribute('id', 'palette');
@@ -60,8 +60,13 @@ export default class Palette {
         sel.setAttribute('id', 'selectors');
         var bkg = newHTML('div', 'catbkg', sel);
         newHTML('div', 'catimage', bkg);
-        var leftPx = 15 * scaleMultiplier;
-        var widthPx = 70 * scaleMultiplier;     // blockcategory 사이의 간격
+        // var leftPx = 15 * scaleMultiplier;
+        // var widthPx = 70 * scaleMultiplier;    
+        // 버튼 위치 
+         var leftPx = 15 * scaleMultiplier;
+         var widthPx = 70 * scaleMultiplier;  
+
+        // blockcategory 사이의 간격
         for (var i = 0; i < BlockSpecs.categories.length; i++) {
             Palette.createSelector(sel, i, leftPx + i * widthPx, 0, BlockSpecs.categories[i]);
         }

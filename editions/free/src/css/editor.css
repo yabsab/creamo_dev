@@ -98,12 +98,12 @@ div.frame {
 
 .pagethumb.on {
     background: url('../assets/ui/pageOn.png');
-    background-size: 100% 100%;
+    background-size: 0% 0%;
 }
 
 .pagethumb.off {
     background: url('../assets/ui/pageOff.png');
-    background-size: 100% 100%;
+    background-size: 0% 0%;
 }
 
 .pagethumb.caret {
@@ -237,7 +237,7 @@ div.frame {
     margin: ${css_vh(0)};
     z-index: 60;
     width: ${300 * scaleMultiplier}px;
-    height: ${92.16 * scaleMultiplier}px;
+    height: ${100 * scaleMultiplier}px;
     /* overflow: hidden; */
 }
 
@@ -250,6 +250,7 @@ div.frame {
 }
 /* 코딩블록 뒷배경  */
 .catbkg .catimage{
+   
     width: ${300 * scaleMultiplier}px;
     height: ${92.16 * scaleMultiplier}px;
     /* 배경 크기에 맞게 다시 요청 - 단색으로 해야 재수정 안함!! 클래스에 있어서 no-repeat를 불가함*/
@@ -263,7 +264,7 @@ div.frame {
     position: relative;
     margin: ${css_vh(0)} ${css_vh(0)} ${css_vh(0)};
     height: ${css_vh(12)};;
-    width: ${724 * scaleMultiplier}px; */
+    width: ${724 * scaleMultiplier}px; 
     z-index:4;
     overflow: hidden;
 }
